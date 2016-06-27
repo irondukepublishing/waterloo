@@ -1,0 +1,11 @@
+Package: waterloo
+Version: 1.1-0
+Title: Waterloo Scientic Graphics
+Author: Malcolm Lidierth <sigtool@kcl.ac.uk>
+Maintainer: Malcolm Lidierth <sigtool@kcl.ac.uk>
+Depends: R (>= 2.5.0), rJava, gshell
+Description: Java-based plotting package
+License: LGPL-3
+URL: http://waterloo.sourceforge.net
+SystemRequirements: Java
+

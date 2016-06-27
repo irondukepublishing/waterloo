@@ -1,0 +1,5 @@
+import(rJava)
+export(WPlot.scatter,WPlot.cloud,WPlot.component,WPlot.line,WPlot.errorbar,
+       WPlot.stairs,WPlot.feather,WPlot.quiver,WPlot.contour,WPlot.bar,
+WPlot.pie,WPlot.polarline,WPlot.polarscatter,WPlot.polarbar,WPlot.polarstem
+)

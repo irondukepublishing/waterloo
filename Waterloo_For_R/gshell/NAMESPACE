@@ -1,0 +1,12 @@
+import(rJava)
+export(G.file, G.value, G.asList, G.asMap, G.asTable,
+       GShell.push, GShell.pull,
+       GShell.getVariable, GShell.setVariable, GShell.remove, GShell.addVariables, GShell.clear,
+       GShell.addImport,
+       GShell.getBinding, GShell.setBinding, GShell.addToBinding,
+       GShell.eval, GShell.evalEDT, GShell.evalLater, GShell.evalQuery, GShell.evalWith, GShell.evalEDTWith,
+       GShell.load, GShell.run, GShell.runEDT, GShell.runLater, GShell.runQuery, GShell.runWith, GShell.runEDTWith,
+       GShell.putScript, GShell.pullScript, GShell.getSource, GShell.setSource,GShell.getScriptList,
+       GShell.getEval, GShell.isDone,GShell.getSwing, GShell.console, GShell.editor,
+       GShell.isOnEDT, GShell.lookAndFeel
+       )

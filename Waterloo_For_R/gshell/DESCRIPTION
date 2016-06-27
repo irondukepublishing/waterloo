@@ -1,0 +1,12 @@
+Package: gshell
+Version: 1.1-0
+Title: Groovy shell for R - compile and run Java/Groovy scripts in R
+Author: Malcolm Lidierth <sigtool@kcl.ac.uk>
+Maintainer: Malcolm Lidierth <sigtool@kcl.ac.uk>
+Depends: R (>= 2.5.0), rJava
+Description: Groovy shell-based access to Java/Groovy
+License: LGPL-3
+URL: http://waterloo.sourceforge.net
+BugReports: http://sourceforge.net/p/waterloo/bugs/
+SystemRequirements: java
+

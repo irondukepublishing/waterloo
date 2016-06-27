@@ -1,0 +1,81 @@
+/* 
+    Document   : PDEGraphics2D
+    Created on : May 9, 2013, 12:41:05 PM
+    Author     : ML
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+body {
+    background-color: whitesmoke;
+    line-height: normal;
+    font-family: Lucida Grande, Lucida Sans, Arial, Helvetica Neue, Verdana, Geneva, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    text-decoration: none;
+    line-height: 1.5em;
+}
+a img { 
+    border: 0px solid transparent;
+}
+a, a:link, a:visited, a:active { 
+    color: darkslategray;
+    text-decoration: underline;
+}
+a:hover {
+    color: blue; 
+}
+#title {
+    font-family: Lucida Grande, Lucida Sans, Arial, Helvetica Neue, Verdana, Geneva, sans-serif;
+    width: 100%;
+    letter-spacing: 0.1em;
+    margin-bottom: 1em;
+    font-size: 1.2em;
+    color: black;
+    text-align: center; 
+}
+#description {
+    font-family: Lucida Grande, Lucida Sans, Arial, Helvetica Neue, Verdana, Geneva, sans-serif;
+    font-style:  italic;
+    width: 100%;
+    letter-spacing: 0.1em;
+    margin-bottom: 1em;
+    font-size: 0.8em;
+    color: black;
+    text-align: center; 
+}
+#links {
+    font-family: Lucida Grande, Lucida Sans, Arial, Helvetica Neue, Verdana, Geneva, sans-serif;
+    width: 100%;
+    margin-bottom: 10pt;
+    font-size: 8pt;
+    color: darkslateblue;
+    text-align: center; 
+}
+canvas { 
+    margin: 10px auto 10px auto;
+    display: block; 
+    outline: 0px; 
+    border-left: 1px solid  darkslategray;
+    border-top: 1px solid darkslategray; 
+    border-right: 1px solid darkslategray;
+    border-bottom: 1px solid darkslategray;
+    width: 1111111111px;
+    height: 2222222222px;
+}
+#content { 
+    margin: auto auto auto auto;
+    alignment-adjust: central;
+    min-width: 150px;
+    min-height: 100px;
+    overflow: auto;
+    border-left: 1px solid  darkslategray;
+    border-top: 1px solid darkslategray; 
+    border-right: 1px solid darkslategray;
+    border-bottom: 1px solid darkslategray;
+    background-color: whitesmoke;
+}
