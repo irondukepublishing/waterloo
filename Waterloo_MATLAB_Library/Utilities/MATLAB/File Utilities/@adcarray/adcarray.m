@@ -43,7 +43,7 @@ classdef adcarray < nmatrix & handle
             if nargin>0
                 if isstruct(varargin{end})
                     s=varargin{end};
-                elseif numel(varargin)==7
+                elseif numel(varargin)==7 || numel(varargin)==8
                     % Backwards compatibility for sigTOOL versions < 1.00
                     % This calling convention is obsolete and may be removed
                     if isa(varargin{1}, 'memmapfile')
@@ -60,6 +60,9 @@ classdef adcarray < nmatrix & handle
                         s.Swapbytes=varargin{7};
                     else
                         s.Swapbytes=false;
+                    end
+                    if numel(varargin)==8
+                        s.Filename=varargin{8};
                     end
                 else
                     s=[];
@@ -108,7 +111,19 @@ classdef adcarray < nmatrix & handle
                     end
                     return
                 case '.'
-                    [varargout{1:max(nargout,0)}]=builtin('subsref',obj, index);
+                    try
+                        [varargout{1:max(nargout,0)}]=builtin('subsref',obj, index);
+                    catch ex
+                        switch ex.identifier
+                            case 'MATLAB:unassignedOutputs'
+                                % No action needed
+                                builtin('subsref',obj, index);
+                            case 'MATLAB:maxlhs'
+                                builtin('subsref',obj, index);
+                            otherwise
+                                rethrow(ex);
+                        end
+                    end
             end
             
             try
@@ -117,6 +132,10 @@ classdef adcarray < nmatrix & handle
                 switch ex.identifier
                     case 'MATLAB:unassignedOutputs'
                         % No action needed
+                    case 'MATLAB:maxlhs'
+                        builtin('subsref',obj, index);
+                    otherwise
+                        rethrow(ex);
                 end
             end
         end
