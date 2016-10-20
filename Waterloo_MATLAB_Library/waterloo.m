@@ -1,4 +1,4 @@
-function varargout=waterloo(option)
+function varargout=waterloo(option, useSplash)
 % WATERLOO adds Project Waterloo files/folders to the MATLAB path/Java class path
 %
 % Example:
@@ -31,6 +31,9 @@ function varargout=waterloo(option)
 
 wversion=1.1;
 
+if nargin<2
+    useSplash=true;
+end
 
 if nargin==1 && ischar(option) && strcmpi(option, 'version')
     d=dir(which('waterloo.m'));
@@ -39,13 +42,13 @@ if nargin==1 && ischar(option) && strcmpi(option, 'version')
     return
 end
 
-% Do  we have a dev release of Batik 1.8 - font support will be specific to the dev release so turn
-% off PDF support.
-if  ~verLessThan('matlab','8.0') || strfind(version(), '9.0')
-    fprintf('\nSuppressing PDF output from Waterloo - Apache Batik files not compatible\n');
-    fprintf('SVG and EPS formats are available\n\n');
-    java.lang.System.setProperty('waterloo_pdf_supported', 'false');
-end
+% % Do  we have a dev release of Batik 1.8 - font support will be specific to the dev release so turn
+% % off PDF support.
+% if  ~verLessThan('matlab','8.0') && ~strfind(version(), '9.0')
+%     fprintf('\nSuppressing PDF output via Batik from Waterloo - Apache Batik files not compatible\n');
+%     fprintf('SVG and EPS formats are available\n\n');
+%     java.lang.System.setProperty('waterloo_pdf_supported', 'false');
+% end
 
 if nargin==0
     option=15;
@@ -207,7 +210,15 @@ end
 % NOW ADD THE JARS TO THE MATLAB DYNAMIC JAVA CLASS PATH
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 disp('Setting up Waterloo distribution');
-folder=fullfile(thisFolder, 'Waterloo_Java_Library');
+
+if exist(folder, 'dir')
+    % Standard distribution for users
+    folder=fullfile(thisFolder, 'Waterloo_Java_Library');
+else
+    % Convenience for in-house dev. Saves copying over.
+    folder=fullfile(thisFolder, 'Sources', 'Java');
+end
+
 % LGPL DISTRIBUTION
 
 if IDEA==true
@@ -247,9 +258,7 @@ else
         GPL=false;
     end
     
-    
-    
-    
+
     % OLD stuff - will be dropped eventually
     %folder=fullfile(thisFolder,'kcl-waterloo-matlab', 'dist');
     file=fullfile(folder, 'kcl-waterloo-matlab', 'dist', 'kcl-waterloo-matlab.jar');
@@ -264,8 +273,6 @@ else
     
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
 
 java.lang.System.setProperty('Waterloo.JavaLoaded', 'true');
 
@@ -283,7 +290,10 @@ if ismac()
         % Among them:
         % Various JFileChooser issues (not all fixed)
         % http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=7124253
-    warning('waterloo:java', 'Java version 1.7.0_60 or higher needed for clipboard functionality on Mac - version installed is %s\n', char(v));
+        if ~isempty(strfind(v, '_6')) || ~isempty(strfind(v, '_7')) || ~isempty(strfind(v, '_8'))
+        else
+            warning('waterloo:java', 'Java version 1.7.0_60 or higher needed for clipboard functionality on Mac - version installed is %s\n', char(v));
+        end
     end
     
     if ~v.startsWith('1.6')
@@ -393,7 +403,11 @@ if DEV;addFXSupport(DEV, fullfile(thisFolder, 'Waterloo_Java_Library'));end;
 % end
 
 try
-    welcomeFrame=kcl.waterloo.gui.Welcome.createWelcome();
+    if useSplash
+        welcomeFrame=kcl.waterloo.gui.Welcome.createWelcome();
+        t=timer('StartDelay', 5, 'TimerFcn', @TimerCallback, 'ExecutionMode', 'singleShot',  'UserData', welcomeFrame);
+        start(t);
+    end
 catch
     d=dir(fullfile(thisFolder,'Waterloo_Java_Library'));
     if isempty(d)
@@ -403,9 +417,6 @@ catch
     end
     return
 end
-t=timer('StartDelay', 5, 'TimerFcn', @TimerCallback, 'ExecutionMode', 'singleShot',  'UserData', welcomeFrame);
-start(t);
-
 
 % System checks
 if ismac()
@@ -445,16 +456,13 @@ if exist('wstartup.m','file')
     wstartup();
 end
 
-fprintf('\nProject Waterloo option(s) loaded [Version=%g Dated:%s]\n', wversion, d.date);
-fprintf('Java code version: %s\n\n', char(kcl.waterloo.util.Version.getVersion()));
-
-disp('For a demo type <a href="matlab:WaterlooTest">WaterlooTest</a> at the MATLAB command line');
+if Graphics
+    % Need the full distro with charting for this
+    disp('For a demo type <a href="matlab:WaterlooTest">WaterlooTest</a> at the MATLAB command line');
+end
 
 disp('');
 disp('----------------------------------------------------------------------------');
-fprintf('\nProject Waterloo is copyright %s King''s College London 2011-\n', char(169));
-disp('Author: Malcolm Lidierth. See the <a href="matlab:web(''-browser'',''http://waterloo.sourceforge.net/'')">Waterloo website</a> for details')
-disp(' ');
 disp('Project Waterloo is free software:  you can redistribute it and/or modify');
 disp('it under the terms of the GNU Lesser General Public License as published by');
 disp('the Free Software Foundation, either version 3 of the License, or');
@@ -468,15 +476,17 @@ disp(' ');
 disp('You should have received a copy of the GNU Lesser General Public License');
 disp('along with this program.  If not, see <a href="matlab:web(''-browser'',''http://www.gnu.org/licenses'')">http://www.gnu.org/licenses/</a>.');
 disp('----------------------------------------------------------------------------');
+disp('');
+
 if GPL
-    disp(' ');
-    disp(' ****      GNU General Public License supplementary code found and loaded       ****');
-    disp(' **** This code may be redistributed under the GPL license only (not the LGPL) ****');
-    disp(' ');
+disp('----------------------------------------------------------------------------');
+    disp(' GNU General Public License supplementary code found and loaded');
+    disp('This code may be redistributed under the GPL license only (not the LGPL)');
+disp('----------------------------------------------------------------------------');
 end
 disp('');
-disp('Questions and comments are welcome at the SourceForge <a href="matlab:web(''-browser'',''http://sourceforge.net/p/waterloo/discussion/'')">discussion site</a>.');
-disp('Bugs can be reported at the SourceForge <a href="matlab:web(''-browser'',''http://sourceforge.net/p/waterloo/bugs/'')">bugs site</a>.');
+
+disp('For further information see the <a href="matlab:web(''-browser'',''http://www.irondukepublishing.com'')">Ironduke Publishing Ltd</a> website.');
 return
 end
 

@@ -57,13 +57,13 @@ switch index(1).type
                     obj.hgcontainer=subsasgn(obj.hgcontainer, index, val);
                 else% isprop(obj.hgcontrol, index(1).subs) || ismethod(obj.hgcontrol,index(1).subs)%22.01.09
                     % assume hgcontrol property or method
-                    try
-                        subsasgn(obj.hgcontrol, index, val);
-                    catch ex%#ok<CTCH>
-                        if (strcmp(ex.identifier,'MATLAB:subsasgnMustHaveOutput'))
-                            [~]=subsasgn(obj.hgcontrol, index, val);
-                        end
-                    end
+%                     try
+                        [~]=subsasgn(obj.hgcontrol, index, val);
+%                     catch ex%#ok<CTCH>
+%                         if (strcmp(ex.identifier,'MATLAB:subsasgnMustHaveOutput'))
+%                             [~]=subsasgn(obj.hgcontrol, index, val);
+%                         end
+%                     end
                 end
         end
     case '()'

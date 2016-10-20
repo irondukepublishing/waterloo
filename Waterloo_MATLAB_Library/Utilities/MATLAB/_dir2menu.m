@@ -1,14 +1,15 @@
-function varargout=dir2menu(ParentDirectory, type, varargin)
+function handle=dir2menu(ParentDirectory, type, varargin)
 % DIR2MENU populates a menu by selectively replicating a folder structure.
 % If populating a figure menu (the default) a new figure will be created
-% and its handl returned. If populating a uicontextmenu, the handl of the
+% and its handle returned. If populating a uicontextmenu, the handle of the
 % menu will be returned and may be used to set the uicontextmenu property
 % of a graphic object explicitly using the set function.
 %
 % Examples:
-% handl=DIR2MENU(PARENTDIRECTORY)
-% handl=DIR2MENU(PARENTDIRECTORY, OPTIONS)
-% handl=DIR2MENU(PARENTDIRECTORY, TYPE, OPTIONS)
+% HANDLE=DIR2MENU(PARENTDIRECTORY)
+% HANDLE=DIR2MENU(PARENTDIRECTORY, OPTIONS)
+% HANDLE=DIR2MENU(PARENTDIRECTORY, TYPE, OPTIONS)
+%
 %
 % PARENTDIRECTORY is the folder to be replicated
 % TYPE, if supplied, is a string: either 'figure' or 'uicontextmenu'.
@@ -16,7 +17,7 @@ function varargout=dir2menu(ParentDirectory, type, varargin)
 % OPTIONS (if supplied) is a cell array of menu properties that will be
 % passed by DIR2MENU to the MATLAB uimenu function when it is called.
 %
-% DIR2MENU returns the handl of the figure or uicontextmenu whos menu has
+% DIR2MENU returns the handle of the figure or uicontextmenu whos menu has
 % been populated.
 %
 % As the menu is created dynamically at run time, DIR2MENU removes the need
@@ -69,6 +70,17 @@ function varargout=dir2menu(ParentDirectory, type, varargin)
 % tree. The menu items' labels are the same as the folder names but with the
 % "menu_" prefix removed. The menu is populated recursively, so you can
 % nest to any depth of folder/subfolder => menu/menulist organization.
+% Executable files may include:
+%               [1] MATLAB m-files
+%               [2] MATLAB mex-files
+%               [3] Java jar files (see Note 1 below)
+%               [4] Python code (not yet implemented)
+%               [5] Shared libraries (DLLs or SOs, not yet implemented)
+% (For files of types 2-5 above, it will generally be easiest to create an
+% m-file gateway function and have that invoke the desired code. This
+% facility is included only so that stand-alone code that emulates the behaviour
+% of dir2menu outside of MATLAB can share the same jars and shared libraries
+% as prototype code being developed in MATLAB)
 %
 % In addition, if type=='figure':
 % "File", "Edit" and "View" items are grouped to the left of
@@ -82,12 +94,11 @@ function varargout=dir2menu(ParentDirectory, type, varargin)
 % prefixed with "group_". These will appear with lines above and below
 % them.
 %
-% (5). For executable files (i.e. m- or mex files), the menu item's
-% CallBack property is set to invoke the function. The handl of the
-% item and an additional MATLAB reserved variable will each be passed
-% implicitly by MATLAB as the first two inputs to the function(equivalent
-% to hObject and EventData in GUIDE-generated GUIs. EventData
-% will be empty - as of R2006b).
+% (5). For executable files , the menu item's CallBack property is set
+% to invoke the function. The handle of the item and an additional MATLAB
+% reserved variable will each be passed implicitly by MATLAB as the first
+% two inputs to the function(equivalent to hObject and EventData in 
+% GUIDE-generated GUIs. EventData will be empty - as of R2006b).
 % It is assumed that user data that will be passsed using the figure's
 % 'UserData' property or application data area.
 %
@@ -175,8 +186,8 @@ function varargout=dir2menu(ParentDirectory, type, varargin)
 %   if nargin>=2 % ***see Note
 %       [filename pathname]=uigetfile('*.avi')
 %       mov = aviread([pathname filesep filename]);
-%       [h, figurehandl]=gcbo;
-%       setappdata(figurehandl,'MyData',mov);
+%       [h, figurehandle]=gcbo;
+%       setappdata(figurehandle,'MyData',mov);
 %   end
 %   ....
 %   ....
@@ -185,7 +196,7 @@ function varargout=dir2menu(ParentDirectory, type, varargin)
 %
 % ***Note: in early DIR2MENU versions, no arguments were passed when a
 % menu_ file was called. Now two arguments are passed implicitly by MATLAB:
-% hObject: the menu item's handl (as returned by gcbo)
+% hObject: the menu item's handle (as returned by gcbo)
 % EventData: presently empty (and MATLAB reserved)
 %
 % -------------------------------------------------------------------------
@@ -222,13 +233,89 @@ function varargout=dir2menu(ParentDirectory, type, varargin)
 %
 %
 % See also:
-% UIMENU, FIGURE, GCBO, SETAPPDATA, GETAPPDATA, GUIDE,
+% UIMENU, FIGURE, GCBO, SETAPPDATA, GETAPPDATA, GUIDE, JAVAADDPATH,
+% JAVACLASSPATH
 % together with
-% "Function handl Callback Syntax" in the Help Search box
+% "Function Handle Callback Syntax" in the Help Search box
 %
 %--------------------------------------------------------------------------
+% Note 1: Supporting Java JAR-files
+% Jar files must be on the MATLAB Java class path before dir2menu is
+% called (see javaaddpath and javaclasspath for details - note that these 
+% call 'clear java' which is why jars are not added from within dir2menu).
+% To create a compatible jar file:
+% [1] Name the jar file "menu_PACKAGE" where PACKAGE is the name of the
+%       Java package to import.
+% [2] Define a menuSetup class with 3 static methods that return
+% varargin{1}, varargin{2} and varargin{3} as above. Name these methods 
+% menuFlag, menuLabel and menuObject. In addition, define a menuCommand
+% to return a string used to determine the subsequent action invoked by
+% this menu item e.g.
+%                 package dtrial;
+%                 public final class menuSetup {
+%                     private menuSetup(){
+%                     }
+%                     public static boolean menuFlag() {
+%                         // If true, enable the menu
+%                         return true;
+%                     }
+%                     public static java.lang.String menuLabel() {
+%                         // Text to appear as menu label
+%                         return "My Label";
+%                     }
+%                     public static java.lang.Object[] menuObject() {
+%                         // User specified. Edit to return any class that
+%                         // MATLAB can handle
+%                         return null;
+%                     }
+%                     public static java.lang.String menuCommand() {
+%                         // User specified. Edit to return any class that
+%                         // MATLAB can handle
+%                         return "ActionCommand";
+%                     }
+%                 }
+% [3] Define an Executer method that accepts ActionCommand as input, stores
+% it and returns a Runnable object as output. Define a run() method that
+% executes ActionCommand in a thread safe way e.g.
+%                     package dtrial;
+%                     public class Executer implements Runnable {
+%                         private String command;
+%                         public Executer(String cmd) {
+%                                 command=cmd;
+%                         }
+%                             public void run() {
+%                                 // User code goes here e.g.
+%                                 System.out.print (command+"\n");
+%                                 // If you create graphics in your code, make it thread safe
+%                                 // using e.g SwingUtilities or awt.EventQueue
+%                         }
+%                     }
+%
+% The MATLAB menu item callback equates to
+%           ex=packagename.Executer(packagename.menuSetup.getCommand())
+%           ex.run();
+%----------------------------------------------------------------------
+% Part of Project Waterloo and the sigTOOL Project at King's College
+% London.
+% Email: sigtool (at) kcl.ac.uk
+% ---------------------------------------------------------------------
+%                               LICENSE
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+%
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+%
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <http://www.gnu.org/licenses/>.
+% ---------------------------------------------------------------------
+%--------------------------------------------------------------------------
 % Author: Malcolm Lidierth 09/06
-% Copyright © The Author & King's College London 2006-2007
+% Copyright © The Author & King's College London 2006-2011
 %--------------------------------------------------------------------------
 
 % Toolboxes required: None
@@ -242,7 +329,7 @@ function varargout=dir2menu(ParentDirectory, type, varargin)
 % 09.12.06 Included code to support the 'external_' prefix. The tags of
 %          uimenu items now contain the full path of the folder/executable
 %          they relate to.
-% 10.12.06 Replaced evals with function handls. Function handl in cell
+% 10.12.06 Replaced evals with function handles. Function handle in cell
 %          array so hObject and EventData added as first input arguments by
 %          MATLAB.
 % 16.10.06 Add the capacity to have the callback routine add data to the
@@ -256,9 +343,13 @@ function varargout=dir2menu(ParentDirectory, type, varargin)
 %          GetChildren
 % 14.03.08 CheckNestLevel: give priority to lowest menu in list
 % 21.04.08 CheckNestLevel: now acts on uicontextmenus also
-
+% 23.09.10 Add JAR support
 
 DirectoryAtEntry=pwd;
+cd(ParentDirectory);
+p=genpath(pwd);
+addpath(p);
+
 GroupMarker=false;
 
 % Get arguments maintaining backwards compatability
@@ -277,13 +368,12 @@ switch nargin
         Options=varargin{:};
 end
 
-cd(ParentDirectory);
-addpath(genpath(pwd));
+
 
 % TOP LEVEL MENU
 switch type
     case 'uicontextmenu'
-        handl=uicontextmenu();
+        handle=uicontextmenu();
         % For uicontextmenus, may have *.m file at the top level - add
         % these first
         d=dir([ParentDirectory filesep '*.m']);
@@ -298,8 +388,8 @@ switch type
             UiMenuDirectories=d;
         end
         if isempty(UiMenuDirectories)
-            delete(handl);
-            handl=[];
+            delete(handle);
+            handle=[];
             return
         end
         [str idx]=menusort(UiMenuDirectories);
@@ -309,7 +399,11 @@ switch type
         TopMenuDirectories(1).source=ParentDirectory;
         TopMenuDirectories(1).children=UiMenuDirectories(idx);
     case 'figure'
-        handl=figure('Units','normalized','Position',[0.05 0.05 0.85 0.85]);
+        handle=figure('NumberTitle','off',...
+            'Units','normalized',...
+            'Position',[0.05 0.05 0.85 0.85]);
+        set(handle,'name',...
+            sprintf('Generated by DIR2MENU. %c King''s College London 2006',169));
         % Set up the top menu items File, Edit & View
         % Seed TopMenuDirectories with a call to dir
         TopMenuDirectories=dir('..');
@@ -371,14 +465,14 @@ switch type
 end
 
 %For each top menu item....(only 1 for uicontextmenus)
-TopMenuhandls=zeros(length(TopMenuDirectories),1);
+TopMenuHandles=zeros(length(TopMenuDirectories),1);
 for index=1:length(TopMenuDirectories)
     %Get any child menu items
     TopMenuDirectories(index).children=...
-        GetChildren(TopMenuDirectories(index).source); %#ok<AGROW>
+        GetChildren(TopMenuDirectories(index).source);
     %Sort them alphabetically
-    [str, idx]=menusort(TopMenuDirectories(index).children);
-    TopMenuDirectories(index).children=TopMenuDirectories(index).children(idx); %#ok<AGROW>
+    [str idx]=menusort(TopMenuDirectories(index).children);
+    TopMenuDirectories(index).children=TopMenuDirectories(index).children(idx);
     %Create the menu item
     label=strrep(TopMenuDirectories(index).name,'menu_','');
     label=strrep(label,'.m','');% added 02/01/07
@@ -386,43 +480,45 @@ for index=1:length(TopMenuDirectories)
     %Add any lower level items - searching recursively through the
     %directory tree if need be.
     if strcmp(type,'figure')
-        TopMenuhandls(index)=makemenu(handl,'label',label,...
+        TopMenuHandles(index)=makemenu(handle,'label',label,...
             'Tag',TopMenuDirectories(index).name,...
             Options{:});
-        PopulateSubMenus(TopMenuhandls(index),TopMenuDirectories(index).children);
+        PopulateSubMenus(TopMenuHandles(index),TopMenuDirectories(index).children);
     elseif strcmp(type,'uicontextmenu')
-        PopulateSubMenus(handl,TopMenuDirectories(index).children);
+        PopulateSubMenus(handle,TopMenuDirectories(index).children);
     end
 end
 
 
 if strcmp(type,'figure')
-    CleanUpFigure(handl, TopMenuhandls);
-    TopMenuhandls=TopMenuhandls(ishandle(TopMenuhandls));
+    CleanUpFigure(handle, TopMenuHandles);
+    TopMenuHandles=TopMenuHandles(ishandle(TopMenuHandles));
     % Combine items with common labels etc
-    for idx=1:length(TopMenuhandls)
-    CheckNestLevel(TopMenuhandls(idx));
+    for idx=1:length(TopMenuHandles)
+    CheckNestLevel(TopMenuHandles(idx));
     end
 else
-    CheckNestLevel(handl);
+    CheckNestLevel(handle);
 end
 
 cd(DirectoryAtEntry);
 
-varargout{1}=handl;
-varargout{2}=TopMenuhandls;
-varargout{3}=get(TopMenuhandls, 'Callback');
-
-
 
 %*************************************************************************
-    function handl=PopulateSubMenus(mainhandl, list)
+    function handle=PopulateSubMenus(mainhandle, list)
         %*************************************************************************
 
         Executables{1}='.m';
         Executables{2}=['.' mexext()];
-
-        handl=[];
+        Executables{3}='.jar';
+        if ispc()
+            Executables{4}='.dll';
+        else
+            Executables{4}='.so';
+        end
+        
+        
+        handle=[];
         if isempty(list)
             return
         end
@@ -433,38 +529,45 @@ varargout{3}=get(TopMenuhandls, 'Callback');
                 % Item is a directory so recursively populate its menu list
                 if ~isempty(strfind(list.name,'group_'))
                     GroupMarker=true;
-                    handl=PopulateSubMenus(mainhandl, list.children);
+                    handle=PopulateSubMenus(mainhandle, list.children);
                     GroupMarker=true;
                 else
                     label=strrep(list.name,'menu_','');
-                    handl=makemenu(mainhandl, 'label', label, 'Tag', list.source, Options{:});
-                    handl=PopulateSubMenus(handl, list.children);
+                    handle=makemenu(mainhandle,'label',label,...
+                        'Tag',list.source,...
+                        Options{:});
+                    handle=PopulateSubMenus(handle, list.children);
                 end
             else
                 % Item is a file
-                [pname, fname, ext]=fileparts(list.name);
-                
+                [pname fname ext]=fileparts(list.name);
                 % Add to menu only if it is an executable file
-                if strcmpi(ext, Executables{1})==1 || strcmpi(ext, Executables{2})==1
-                    funchandl=str2func([pname fname]);
-                    if isempty(funchandl)
-                        disp(label);
-                    else
-                        [flag label data]=funchandl(0);
-                        % In the line below, remove the brackets around
-                        % funchandl to make this backwards compatible with the
-                        % previous dir2menu version callback format
-                        handl=makemenu(mainhandl,'label',label,...
-                            'Tag',list.source,...
-                            'Callback',{funchandl},...
-                            'Enable',Log2Str(flag),...
-                            Options{:});
-                        % Put any info returned by funchandl(0) call in the
-                        % UserData property
-                        set(handl,'UserData',data);
-                    end
+                if strcmpi(ext, Executables{1})==1 ||...
+                        strcmpi(ext, Executables{2})==1
+                    funchandle=str2func([pname fname]);
+                    [flag label data]=funchandle(0);
+                    handle=makemenu(mainhandle,'label',label,...
+                        'Tag',list.source,...
+                        'Callback',{funchandle},...
+                        'Enable',Log2Str(flag),...
+                        Options{:});
+                    % Put any info returned by funchandle(0) call in the
+                    % UserData property
+                    set(handle,'UserData',data);
+                elseif strcmpi(ext, Executables{3})==1
+                    packagename=strrep(fname, 'menu_','');
+                    flag=logical(javaMethod('menuFlag', sprintf('%s.menuSetup', 'dtrial')));
+                    label=char(javaMethod('menuLabel', sprintf('%s.menuSetup', 'dtrial')));
+                    data=javaMethod('menuObject', sprintf('%s.menuSetup', 'dtrial'));
+                    actionCommand=char(javaMethod('menuCommand', sprintf('%s.menuSetup', 'dtrial')));
+                    handle=makemenu(mainhandle,'label',label,...
+                        'Tag',list.source,...
+                        'Callback', {@RunJava, packagename, actionCommand} ,...
+                        'Enable',Log2Str(flag),...
+                        Options{:});
+                    set(handle,'UserData',data);
                 else
-                    handl=mainhandl;
+                    handle=mainhandle;
                     return
                 end
             end
@@ -475,19 +578,21 @@ varargout{3}=get(TopMenuhandls, 'Callback');
                     %Directory
                     if ~isempty(strfind(list(i).name,'group_'))
                         GroupMarker=true;
-                        handl=PopulateSubMenus(mainhandl, list(i).children);
+                        handle=PopulateSubMenus(mainhandle, list(i).children);
                         GroupMarker=true;
                     else
                         label=strrep(list(i).name,'menu_','');
-                        tophandl=makemenu(mainhandl,'label',label,'Tag',list(i).source,Options{:});
+                        tophandle=makemenu(mainhandle,'label',label,...
+                            'Tag',list(i).source,...
+                            Options{:});
                         for j=1:length(list(i).children);
-                            handl=PopulateSubMenus(tophandl, list(i).children(j));
+                            handle=PopulateSubMenus(tophandle, list(i).children(j));
                         end
                     end
                 else
                     %File - the next call to PopulateSubMenus will set up
                     %the menu item that terminates this branch
-                    handl=PopulateSubMenus(mainhandl, list(i));
+                    handle=PopulateSubMenus(mainhandle, list(i));
                 end
             end
             return
@@ -536,8 +641,8 @@ valtemp=dir([directory filesep 'external_*.m']);
 for k=1:length(valtemp)
     valtemp(k).children=[];
     [path name]=fileparts(valtemp(k).name);
-    funchandl=str2func(name);
-    [flag name folder]=funchandl();
+    funchandle=str2func(name);
+    [flag name folder]=funchandle();
     if flag==true
         % Add (k) subscript 17/2/07
         valtemp(k).children=GetChildren(folder);
@@ -625,8 +730,8 @@ function TopMenuDirectories=GetMenuDirectories(ParentDirectory, TopMenuDirectori
 d=dir('external_*.m');
 for kk=1:length(d)
     [path name]=fileparts(d(kk).name);
-    funchandl=str2func(name);
-    [flag name folder]=funchandl();
+    funchandle=str2func(name);
+    [flag name folder]=funchandle();
     if flag==true
         d2=dir(folder);
         %[parent name]=fileparts(folder);
@@ -666,13 +771,13 @@ end
 
 
 %*************************************************************************
-function CleanUpFigure(handl, TopMenuhandls)
+function CleanUpFigure(handle, TopMenuHandles)
 %*************************************************************************
 % If new menus are empty, leave the standard menu items with their standard
 % callbacks. Otherwise replace.
 
-h3=allchild(handl);
-h=findobj(handl,'Label','File');
+h3=allchild(handle);
+h=findobj(handle,'Label','File');
 if isempty(get(h,'Children'))
     delete(h);
 else
@@ -681,8 +786,8 @@ else
     delete(hd);
 end
 
-h3=allchild(handl);
-h=findobj(handl,'Label','Edit');
+h3=allchild(handle);
+h=findobj(handle,'Label','Edit');
 if isempty(get(h,'Children'))
     delete(h);
 else
@@ -691,8 +796,8 @@ else
     delete(hd);
 end
 
-h3=allchild(handl);
-h=findobj(handl,'Label','View');
+h3=allchild(handle);
+h=findobj(handle,'Label','View');
 if isempty(get(h,'Children'))
     delete(h);
 else
@@ -702,13 +807,13 @@ else
 end
 
 %Place custom menus between View and Insert
-for k=4:length(TopMenuhandls)
-    set(TopMenuhandls(k),'Position',k);
+for k=4:length(TopMenuHandles)
+    set(TopMenuHandles(k),'Position',k);
 end
 
 
-h3=allchild(handl);
-h=findobj(handl,'Label','Insert');
+h3=allchild(handle);
+h=findobj(handle,'Label','Insert');
 if isempty(get(h,'Children'))
     delete(h);
 else
@@ -717,8 +822,8 @@ else
     delete(hd);
 end
 
-h3=allchild(handl);
-h=findobj(handl,'Label','Tools');
+h3=allchild(handle);
+h=findobj(handle,'Label','Tools');
 if isempty(get(h,'Children'))
     delete(h);
 else
@@ -727,8 +832,8 @@ else
     delete(hd);
 end
 
-h3=allchild(handl);
-h=findobj(handl,'Label','Desktop');
+h3=allchild(handle);
+h=findobj(handle,'Label','Desktop');
 if isempty(get(h,'Children'))
     delete(h);
 else
@@ -737,8 +842,8 @@ else
     delete(hd);
 end
 
-h3=allchild(handl);
-h=findobj(handl,'Label','Window');
+h3=allchild(handle);
+h=findobj(handle,'Label','Window');
 if isempty(get(h,'Children'))
     delete(h);
 else
@@ -747,8 +852,8 @@ else
     delete(hd);
 end
 
-h3=allchild(handl);
-h=findobj(handl,'Label','Help');
+h3=allchild(handle);
+h=findobj(handle,'Label','Help');
 if isempty(get(h,'Children'))
     delete(h);
 else
@@ -760,31 +865,26 @@ end
 %*************************************************************************
 
 %*************************************************************************
-function CheckNestLevel(handl)
+function CheckNestLevel(handle)
 %*************************************************************************
 % Collapse lists together if they share the same label as other menuitems
 % at the same level in the tree, or if a child shares its label with its
 % parent. This allows external_ and menu_ items to be included in the same 
 % subfolder
 
-mhandls=get(handl,'Children');
+mhandles=get(handle,'Children');
 index=1;
-if strcmp(get(handl, 'Type'), 'uimenu')==1
+if strcmp(get(handle, 'Type'), 'uimenu')==1
     % uimenus only - not context menus
-    while index<=length(mhandls)
+    while index<=length(mhandles)
         % Does a child menu have the same label as its parent
-        if strcmp(get(mhandls(index), 'Label'),get(handl, 'Label'))
-            h=get(mhandls(index),'Children');
-            %             callback=get(mhandls(index), 'Callback');
-            try
-                copyobj(h, handl, 'legacy' );
-            catch ex
-                copyobj(h, handl);
-            end
-            %             set(handl, 'Callback', callback)
-            delete(mhandls(index));
+        if strcmp(get(mhandles(index), 'Label'),get(handle, 'Label'))
+            h=get(mhandles(index),'Children');
+            copyobj(h, handle);
+            delete(mhandles(index));
+            %mhandles(index)=[];
             % Start the checking again
-            CheckNestLevel(handl);
+            CheckNestLevel(handle);
             return
         else
             index=index+1;
@@ -794,33 +894,17 @@ end
 
 % Check for duplication of labels at a specific level
 % Combine them if duplicated
-mhandls=sort(get(handl,'Children'));
+mhandles=sort(get(handle,'Children'));
 lidx=1;
-while lidx<=length(mhandls)
+while lidx<=length(mhandles)
     hidx=lidx+1;
-    while hidx<=length(mhandls)
-        if strcmp(get(mhandls(hidx), 'Label'), get(mhandls(lidx), 'Label'))
+    while hidx<=length(mhandles)
+        if strcmp(get(mhandles(hidx), 'Label'), get(mhandles(lidx), 'Label'))
             % 14.03.08 Reverse priority: copy hidx/delete lidx
-            h=get(mhandls(lidx),'Children');
-            if ~isempty(get(mhandls(hidx), 'Callback'))
-                %                 callback=get(mhandls(hidx), 'Callback');
-                try
-                    copyobj(h,mhandls(hidx),'legacy' );
-                catch ex
-                    copyobj(h,mhandls(hidx));
-                end
-                %                 set(mhandls(hidx), 'Callback', callback);
-                %delete(mhandls(lidx));
-            else
-                %                 callback=get(mhandls(hidx), 'Callback');
-                try
-                    copyobj(h,mhandls(lidx),'legacy' );
-                catch ex
-                    copyobj(h,mhandls(lidx));
-                end
-                %                 set(mhandls(lidx), 'Callback', callback);
-                %delete(mhandls(hidx));
-            end
+            h=get(mhandles(lidx),'Children');
+            copyobj(h,mhandles(hidx));
+            delete(mhandles(lidx));
+            mhandles(lidx)=[];
         end
         hidx=hidx+1;
     end
@@ -828,11 +912,18 @@ while lidx<=length(mhandls)
 end
 
 % Work through the deeper elements through recursive calls
-mhandls=get(handl,'Children');
-for index=1:length(mhandls)
-    CheckNestLevel(mhandls(index));
+mhandles=get(handle,'Children');
+for index=1:length(mhandles)
+    CheckNestLevel(mhandles(index));
 end
 
 return
 end
 %*************************************************************************
+
+
+function RunJava(hObject, EventData, packagename, actionCommand)
+runnable=eval(sprintf('%s.Executer(''%s'')', packagename, actionCommand));
+runnable.run();
+return
+end

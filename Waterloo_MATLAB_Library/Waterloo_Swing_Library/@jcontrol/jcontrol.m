@@ -299,8 +299,8 @@ set(containerHandle, 'UserData', obj.hgcontrol);
 % Default to normalized
 set(obj, 'Units','normalized');
 
-
-% 27.05.10 Match backgrounds by default
+ 
+% % % 27.05.10 Match backgrounds by default
 % try
 %     color=get(get(obj.hgcontainer, 'Parent'),'BackgroundColor');
 % catch %#ok<CTCH>
@@ -311,8 +311,7 @@ set(obj, 'Units','normalized');
 %     end
 % end
 % color=int16(color*255);
-% obj.hgcontrol.setBackground(java.awt.Color(color(1), color(2), color(3)));
-
+% obj.hgcontrol.setBackground(java.awt.Color(color(1), color(2), color(3), 0));
 
 % Set values as requested
 if ~isempty(varargin)
