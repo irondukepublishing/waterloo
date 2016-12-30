@@ -53,3 +53,7 @@ Thumbs.db
 /Sources/Java/GraphExplorer/dist/
 /Sources/Java/kcl-waterloo-base/dist/
 /Sources/Java/waterlooPlot/dist/
+
+/Sources/Java/GPLSupplement/kcl-gpl/dist/
+/Sources/Java/GPLSupplement/kcl-gpl/build/
+/Sources/Java/GPLSupplement/kcl-gpl/lib/src

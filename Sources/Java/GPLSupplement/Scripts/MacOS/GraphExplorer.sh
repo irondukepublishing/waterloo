@@ -1,0 +1,1 @@
+java -jar  -Dapple.awt.graphics.UseQuartz="true" -Xdock:name="GraphExplorer" "/Volumes/BOOTCAMP/waterloo/Sources/Java/GraphExplorer/dist/GraphExplorer.jar"
