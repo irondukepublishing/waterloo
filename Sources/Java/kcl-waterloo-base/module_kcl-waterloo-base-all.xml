@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_kcl-waterloo-base-all" default="compile.module.kcl-waterloo-base-all">
+    <dirname property="module.kcl-waterloo-base-all.basedir" file="${ant.file.module_kcl-waterloo-base-all}"/>
+  
+    <property name="module.jdk.home.kcl-waterloo-base-all" value="${project.jdk.home}"/>
+    <property name="module.jdk.bin.kcl-waterloo-base-all" value="${project.jdk.bin}"/>
+    <property name="module.jdk.classpath.kcl-waterloo-base-all" value="${project.jdk.classpath}"/>
+  
+    <property name="compiler.args.kcl-waterloo-base-all" value="-encoding UTF-8 -source 1.6 ${compiler.args}"/>
+  
+    <property name="kcl-waterloo-base-all.output.dir" value="${module.kcl-waterloo-base-all.basedir}/out/production/kcl-waterloo-base-all"/>
+    <property name="kcl-waterloo-base-all.testoutput.dir" value="${module.kcl-waterloo-base-all.basedir}/out/test/kcl-waterloo-base-all"/>
+  
+    <path id="kcl-waterloo-base-all.module.bootclasspath">
+        <!-- Paths to be included in compilation bootclasspath -->
+    </path>
+  
+    <path id="kcl-waterloo-base-all.module.production.classpath">
+        <path refid="${module.jdk.classpath.kcl-waterloo-base-all}"/>
+        <path refid="library.lib.classpath"/>
+        <path refid="library.slf4j-api-1.7.5.classpath"/>
+        <path refid="library.slf4j-log4j12-1.7.5.classpath"/>
+        <path refid="library.log4j-1.2.17.classpath"/>
+        <path refid="library.batik-anim.classpath"/>
+        <path refid="library.swingx-common-1.6.5-1.classpath"/>
+        <path refid="library.javageom-0.11.1.classpath"/>
+    </path>
+  
+    <path id="kcl-waterloo-base-all.runtime.production.module.classpath">
+        <pathelement location="${kcl-waterloo-base-all.output.dir}"/>
+        <path refid="library.lib.classpath"/>
+        <path refid="library.slf4j-api-1.7.5.classpath"/>
+        <path refid="library.slf4j-log4j12-1.7.5.classpath"/>
+        <path refid="library.log4j-1.2.17.classpath"/>
+        <path refid="library.batik-anim.classpath"/>
+        <path refid="library.swingx-common-1.6.5-1.classpath"/>
+        <path refid="library.javageom-0.11.1.classpath"/>
+    </path>
+  
+    <path id="kcl-waterloo-base-all.module.classpath">
+        <path refid="${module.jdk.classpath.kcl-waterloo-base-all}"/>
+        <pathelement location="${kcl-waterloo-base-all.output.dir}"/>
+        <path refid="library.lib.classpath"/>
+        <path refid="library.slf4j-api-1.7.5.classpath"/>
+        <path refid="library.slf4j-log4j12-1.7.5.classpath"/>
+        <path refid="library.log4j-1.2.17.classpath"/>
+        <path refid="library.batik-anim.classpath"/>
+        <path refid="library.swingx-common-1.6.5-1.classpath"/>
+        <path refid="library.javageom-0.11.1.classpath"/>
+    </path>
+  
+    <path id="kcl-waterloo-base-all.runtime.module.classpath">
+        <pathelement location="${kcl-waterloo-base-all.testoutput.dir}"/>
+        <pathelement location="${kcl-waterloo-base-all.output.dir}"/>
+        <path refid="library.lib.classpath"/>
+        <path refid="library.slf4j-api-1.7.5.classpath"/>
+        <path refid="library.slf4j-log4j12-1.7.5.classpath"/>
+        <path refid="library.log4j-1.2.17.classpath"/>
+        <path refid="library.batik-anim.classpath"/>
+        <path refid="library.swingx-common-1.6.5-1.classpath"/>
+        <path refid="library.javageom-0.11.1.classpath"/>
+    </path>
+  
+  
+    <patternset id="excluded.from.module.kcl-waterloo-base-all">
+        <patternset refid="ignored.files"/>
+    </patternset>
+  
+    <patternset id="excluded.from.compilation.kcl-waterloo-base-all">
+        <patternset refid="excluded.from.module.kcl-waterloo-base-all"/>
+    </patternset>
+  
+    <path id="kcl-waterloo-base-all.module.sourcepath">
+        <dirset dir="${module.kcl-waterloo-base-all.basedir}">
+            <include name="src"/>
+            <include name="src/kcl/waterloo/demo/resources"/>
+        </dirset>
+    </path>
+  
+  
+    <target name="compile.module.kcl-waterloo-base-all" depends="compile.module.kcl-waterloo-base-all.production,compile.module.kcl-waterloo-base-all.tests" description="Compile module kcl-waterloo-base-all"/>
+  
+    <target name="compile.module.kcl-waterloo-base-all.production" depends="register.custom.compilers" description="Compile module kcl-waterloo-base-all; production classes">
+        <mkdir dir="${kcl-waterloo-base-all.output.dir}"/>
+        <javac2 destdir="${kcl-waterloo-base-all.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.kcl-waterloo-base-all}/javac">
+            <compilerarg line="${compiler.args.kcl-waterloo-base-all}"/>
+            <bootclasspath refid="kcl-waterloo-base-all.module.bootclasspath"/>
+            <classpath refid="kcl-waterloo-base-all.module.production.classpath"/>
+            <src refid="kcl-waterloo-base-all.module.sourcepath"/>
+            <patternset refid="excluded.from.compilation.kcl-waterloo-base-all"/>
+        </javac2>
+    
+        <copy todir="${kcl-waterloo-base-all.output.dir}">
+            <fileset dir="${module.kcl-waterloo-base-all.basedir}/src">
+                <patternset refid="compiler.resources"/>
+                <type type="file"/>
+            </fileset>
+            <fileset dir="${module.kcl-waterloo-base-all.basedir}/src/kcl/waterloo/demo/resources">
+                <patternset refid="compiler.resources"/>
+                <type type="file"/>
+            </fileset>
+        </copy>
+    </target>
+  
+    <target name="compile.module.kcl-waterloo-base-all.tests" depends="register.custom.compilers,compile.module.kcl-waterloo-base-all.production" description="compile module kcl-waterloo-base-all; test classes" unless="skip.tests"/>
+  
+    <target name="clean.module.kcl-waterloo-base-all" description="cleanup module">
+        <delete dir="${kcl-waterloo-base-all.output.dir}"/>
+        <delete dir="${kcl-waterloo-base-all.testoutput.dir}"/>
+    </target>
+</project>

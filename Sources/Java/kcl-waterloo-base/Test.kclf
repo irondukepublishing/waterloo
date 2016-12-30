@@ -1,0 +1,1214 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.6.0_37" class="java.beans.XMLDecoder"> 
+    <void id="GJDefaults0" property="owner"> 
+        <void method="copyEntries"> 
+            <object class="java.util.LinkedHashMap"> 
+                <void method="put"> 
+                    <string>GJAbstractGraphContainer.backgroundColor</string> 
+                    <object id="Color0" class="java.awt.Color"> 
+                        <int>255</int> 
+                        <int>255</int> 
+                        <int>255</int> 
+                        <int>255</int> 
+                    </object> 
+                </void> 
+                <void method="put"> 
+                    <string>GJAbstractGraph.mouseTextAsInverse</string> 
+                    <boolean>true</boolean> 
+                </void> 
+                <void method="put"> 
+                    <string>GJAbstractGraphContainer.backgroundPainted</string> 
+                    <boolean>true</boolean> 
+                </void> 
+                <void method="put"> 
+                    <string>GJAbstractPlot.edgeColor</string> 
+                    <object id="Color1" class="java.awt.Color"> 
+                        <int>0</int> 
+                        <int>0</int> 
+                        <int>0</int> 
+                        <int>255</int> 
+                    </object> 
+                </void> 
+                <void method="put"> 
+                    <string>GJAnnotation.textColor</string> 
+                    <object id="Color2" class="java.awt.Color"> 
+                        <int>0</int> 
+                        <int>0</int> 
+                        <int>0</int> 
+                        <int>255</int> 
+                    </object> 
+                </void> 
+                <void method="put"> 
+                    <string>Clipboard.formatPDF</string> 
+                    <boolean>true</boolean> 
+                </void> 
+                <void method="put"> 
+                    <string>GJBasicPanel.backgroundColor</string> 
+                    <object idref="Color0"/> 
+                </void> 
+                <void method="put"> 
+                    <string>GJAbstractGraph.minorGridStrokeWeight</string> 
+                    <float>0.6</float> 
+                </void> 
+                <void method="put"> 
+                    <string>GJAbstractPlot.lineColor</string> 
+                    <object idref="Color1"/> 
+                </void> 
+                <void method="put"> 
+                    <string>GJAnnotation.lineColor</string> 
+                    <object idref="Color2"/> 
+                </void> 
+                <void method="put"> 
+                    <string>GJAbstractGraph.innerAxisLabelled</string> 
+                    <boolean>false</boolean> 
+                </void> 
+                <void method="put"> 
+                    <string>GJAbstractGraph.majorGridStrokeWeight</string> 
+                    <float>1.0</float> 
+                </void> 
+                <void method="put"> 
+                    <string>GJAbstractGraph.backgroundPainted</string> 
+                    <boolean>false</boolean> 
+                </void> 
+                <void method="put"> 
+                    <string>GJAbstractGraph.tightAxes</string> 
+                    <boolean>false</boolean> 
+                </void> 
+                <void method="put"> 
+                    <string>GJAbstractPlot.lineStyle</string> 
+                    <string>Solid</string> 
+                </void> 
+                <void method="put"> 
+                    <string>GJAbstractGraph.minorCountYHint</string> 
+                    <int>4</int> 
+                </void> 
+                <void method="put"> 
+                    <string>GJGraph.bottomAxisLabelled</string> 
+                    <boolean>true</boolean> 
+                </void> 
+                <void method="put"> 
+                    <string>Clipboard.formatEPS</string> 
+                    <boolean>true</boolean> 
+                </void> 
+                <void method="put"> 
+                    <string>GJGraph.rightAxisLabelled</string> 
+                    <boolean>false</boolean> 
+                </void> 
+                <void method="put"> 
+                    <string>GJAbstractPlot.markerSymbol</string> 
+                    <string>Circle</string> 
+                </void> 
+                <void method="put"> 
+                    <string>GJAbstractGraph.minorGridPainted</string> 
+                    <boolean>true</boolean> 
+                </void> 
+                <void method="put"> 
+                    <string>GJAbstractGraph.axisStroke</string> 
+                    <float>1.5</float> 
+                </void> 
+                <void method="put"> 
+                    <string>GJGraph.topAxisPainted</string> 
+                    <boolean>false</boolean> 
+                </void> 
+                <void method="put"> 
+                    <string>GJAbstractGraph.axesPadding</string> 
+                    <double>0.05</double> 
+                </void> 
+                <void method="put"> 
+                    <string>GJGraph.rightAxisPainted</string> 
+                    <boolean>false</boolean> 
+                </void> 
+                <void method="put"> 
+                    <string>GJAbstractGraph.axisColor</string> 
+                    <object idref="Color2"/> 
+                </void> 
+                <void method="put"> 
+                    <string>GJAbstractGraph.majorGridPainted</string> 
+                    <boolean>true</boolean> 
+                </void> 
+                <void method="put"> 
+                    <string>GJAbstractGraph.secondFormatter</string> 
+                    <object class="java.text.DecimalFormat"> 
+                        <void property="groupingSize"> 
+                            <int>0</int> 
+                        </void> 
+                        <void property="groupingUsed"> 
+                            <boolean>false</boolean> 
+                        </void> 
+                        <void property="maximumFractionDigits"> 
+                            <int>2</int> 
+                        </void> 
+                        <void property="maximumIntegerDigits"> 
+                            <int>1</int> 
+                        </void> 
+                    </object> 
+                </void> 
+                <void method="put"> 
+                    <string>GJAbstractPlot.fill</string> 
+                    <object id="Color3" class="java.awt.Color"> 
+                        <int>192</int> 
+                        <int>192</int> 
+                        <int>192</int> 
+                        <int>255</int> 
+                    </object> 
+                </void> 
+                <void method="put"> 
+                    <string>GJAbstractGraph.minorGridColor</string> 
+                    <object id="Color4" class="java.awt.Color"> 
+                        <int>100</int> 
+                        <int>149</int> 
+                        <int>237</int> 
+                        <int>255</int> 
+                    </object> 
+                </void> 
+                <void method="put"> 
+                    <string>GJAbstractPlot.lineStrokeWidth</string> 
+                    <float>1.75</float> 
+                </void> 
+                <void method="put"> 
+                    <string>GJAbstractPlot.antiAliasing</string> 
+                    <boolean>true</boolean> 
+                </void> 
+                <void method="put"> 
+                    <string>GJGraph.leftAxisLabelled</string> 
+                    <boolean>true</boolean> 
+                </void> 
+                <void method="put"> 
+                    <string>GJGraph.bottomAxisPainted</string> 
+                    <boolean>true</boolean> 
+                </void> 
+                <void method="put"> 
+                    <string>GJAbstractGraph.innerAxisPainted</string> 
+                    <boolean>false</boolean> 
+                </void> 
+                <void method="put"> 
+                    <string>GJGraph.leftAxisPainted</string> 
+                    <boolean>true</boolean> 
+                </void> 
+                <void method="put"> 
+                    <string>GJAbstractGraph.minorCountXHint</string> 
+                    <int>4</int> 
+                </void> 
+                <void method="put"> 
+                    <string>Clipboard.formatPS</string> 
+                    <boolean>true</boolean> 
+                </void> 
+                <void method="put"> 
+                    <string>Clipboard.formatSVGAsText</string> 
+                    <boolean>true</boolean> 
+                </void> 
+                <void method="put"> 
+                    <string>GJAbstractGraph.majorGridColor</string> 
+                    <object idref="Color4"/> 
+                </void> 
+                <void method="put"> 
+                    <string>Clipboard.formatSVG</string> 
+                    <boolean>true</boolean> 
+                </void> 
+                <void method="put"> 
+                    <string>GJAnnotation.textBackground</string> 
+                    <object idref="Color3"/> 
+                </void> 
+                <void method="put"> 
+                    <string>GJAnnotation.fill</string> 
+                    <object idref="Color3"/> 
+                </void> 
+                <void method="put"> 
+                    <string>GJGraph.topAxisLabelled</string> 
+                    <boolean>false</boolean> 
+                </void> 
+                <void method="put"> 
+                    <string>GJAbstractGraph.mousePositionTextFormat</string> 
+                    <string>x= %.3f, y= %.3f </string> 
+                </void> 
+                <void method="put"> 
+                    <string>GJAbstractGraph.mainFormatter</string> 
+                    <object class="java.text.DecimalFormat"> 
+                        <void property="maximumFractionDigits"> 
+                            <int>2</int> 
+                        </void> 
+                    </object> 
+                </void> 
+                <void method="put"> 
+                    <string>GJAbstractPlot.markerSize</string> 
+                    <double>5.0</double> 
+                </void> 
+                <void method="put"> 
+                    <string>GJAbstractGraph.backgroundColor</string> 
+                    <object idref="Color0"/> 
+                </void> 
+                <void method="put"> 
+                    <string>GJAbstractGraphContainer.font</string> 
+                    <object id="Font0" class="java.awt.Font"> 
+                        <string>SansSerif</string> 
+                        <int>1</int> 
+                        <int>10</int> 
+                    </object> 
+                </void> 
+                <void method="put"> 
+                    <string>GJAbstractPlot.edgeStrokeWidth</string> 
+                    <float>1.5</float> 
+                </void> 
+            </object> 
+        </void> 
+    </void> 
+    <string>Waterloo Scientific Graphics: Copyright King&apos;s College London 2012-</string> 
+    <string>kcl.waterloo.xml.GJEncoder/GJDecoder version:</string> 
+    <long>1</long> 
+    <long>0</long> 
+    <string>Created: Mon Nov 19 21:54:28 GMT 2012</string> 
+    <string>Waterloo Graphics Version 1.0.0(Alpha)</string> 
+    <object idref="GJDefaults0"/> 
+    <object class="java.util.LinkedHashMap"> 
+        <void method="put"> 
+            <string>Dimension</string> 
+            <object class="java.awt.Dimension"> 
+                <int>0</int> 
+                <int>0</int> 
+            </object> 
+        </void> 
+    </object> 
+    <object id="GJGraphContainer0" class="kcl.waterloo.graphics.GJGraphContainer"> 
+        <void method="add"> 
+            <object id="GJGraph0" class="kcl.waterloo.graphics.GJGraph"> 
+                <void property="font"> 
+                    <object idref="Font0"/> 
+                </void> 
+                <void property="XLeft"> 
+                    <double>0.5</double> 
+                </void> 
+                <void property="XRight"> 
+                    <double>10.0</double> 
+                </void> 
+                <void property="YBottom"> 
+                    <double>-0.6931471805599453</double> 
+                </void> 
+                <void property="YTop"> 
+                    <double>2.302585092994046</double> 
+                </void> 
+                <void property="bottomAxisPanel"> 
+                    <object id="GJAxisPanel0" class="kcl.waterloo.graphics.GJAxisPanel"> 
+                        <void property="dynamicExtent"> 
+                            <double>18.0</double> 
+                        </void> 
+                        <void property="label"> 
+                            <void property="foregroundPainter"> 
+                                <void id="BufferedImageOpArray0" property="filters"/> 
+                                <void property="filters"> 
+                                    <object idref="BufferedImageOpArray0"/> 
+                                </void> 
+                            </void> 
+                        </void> 
+                        <void property="parentGraph"> 
+                            <object idref="GJGraph0"/> 
+                        </void> 
+                        <void property="position"> 
+                            <object class="kcl.waterloo.graphics.GJAxisPanel$Position" method="valueOf"> 
+                                <string>BOTTOM</string> 
+                            </object> 
+                        </void> 
+                        <void method="addMouseListener"> 
+                            <object id="GJAddedComponentMouseHandler0" class="kcl.waterloo.graphics.GJAddedComponentMouseHandler"> 
+                                <void property="parentComponent"> 
+                                    <object idref="GJGraphContainer0"/> 
+                                </void> 
+                            </object> 
+                        </void> 
+                        <void method="addMouseListener"> 
+                            <object id="GJContainerMouseHandler0" class="kcl.waterloo.graphics.GJContainerMouseHandler"> 
+                                <void property="parentContainer"> 
+                                    <object idref="GJGraphContainer0"/> 
+                                </void> 
+                            </object> 
+                        </void> 
+                        <void method="addMouseListener"> 
+                            <object idref="GJAddedComponentMouseHandler0"/> 
+                        </void> 
+                        <void method="addMouseListener"> 
+                            <object idref="GJContainerMouseHandler0"/> 
+                        </void> 
+                        <void method="addMouseListener"> 
+                            <object idref="GJAddedComponentMouseHandler0"/> 
+                        </void> 
+                        <void method="addMouseMotionListener"> 
+                            <object idref="GJAddedComponentMouseHandler0"/> 
+                        </void> 
+                        <void method="addMouseMotionListener"> 
+                            <object idref="GJContainerMouseHandler0"/> 
+                        </void> 
+                        <void method="addMouseMotionListener"> 
+                            <object idref="GJAddedComponentMouseHandler0"/> 
+                        </void> 
+                        <void method="addMouseMotionListener"> 
+                            <object idref="GJContainerMouseHandler0"/> 
+                        </void> 
+                        <void method="addMouseMotionListener"> 
+                            <object idref="GJAddedComponentMouseHandler0"/> 
+                        </void> 
+                    </object> 
+                </void> 
+                <void property="graphContainer"> 
+                    <object idref="GJGraphContainer0"/> 
+                </void> 
+                <void property="gridInterface"> 
+                    <object class="kcl.waterloo.swing.GCGrid"> 
+                        <array class="int" length="2"> 
+                            <void index="0"> 
+                                <int>1</int> 
+                            </void> 
+                            <void index="1"> 
+                                <int>1</int> 
+                            </void> 
+                        </array> 
+                        <void method="add"> 
+                            <object idref="GJGraphContainer0"/> 
+                        </void> 
+                        <void id="intArray0" property="grid"/> 
+                        <void property="grid"> 
+                            <object idref="intArray0"/> 
+                        </void> 
+                    </object> 
+                </void> 
+                <void property="leftAxisPanel"> 
+                    <object id="GJAxisPanel1" class="kcl.waterloo.graphics.GJAxisPanel"> 
+                        <void property="dynamicExtent"> 
+                            <double>27.0</double> 
+                        </void> 
+                        <void property="label"> 
+                            <void property="foregroundPainter"> 
+                                <void id="BufferedImageOpArray1" property="filters"/> 
+                                <void property="filters"> 
+                                    <object idref="BufferedImageOpArray1"/> 
+                                </void> 
+                            </void> 
+                            <void property="textRotation"> 
+                                <double>4.71238898038469</double> 
+                            </void> 
+                        </void> 
+                        <void property="parentGraph"> 
+                            <object idref="GJGraph0"/> 
+                        </void> 
+                        <void property="position"> 
+                            <object class="kcl.waterloo.graphics.GJAxisPanel$Position" method="valueOf"> 
+                                <string>LEFT</string> 
+                            </object> 
+                        </void> 
+                        <void method="addMouseListener"> 
+                            <object idref="GJAddedComponentMouseHandler0"/> 
+                        </void> 
+                        <void method="addMouseListener"> 
+                            <object idref="GJContainerMouseHandler0"/> 
+                        </void> 
+                        <void method="addMouseListener"> 
+                            <object idref="GJAddedComponentMouseHandler0"/> 
+                        </void> 
+                        <void method="addMouseListener"> 
+                            <object idref="GJContainerMouseHandler0"/> 
+                        </void> 
+                        <void method="addMouseListener"> 
+                            <object idref="GJAddedComponentMouseHandler0"/> 
+                        </void> 
+                        <void method="addMouseMotionListener"> 
+                            <object idref="GJAddedComponentMouseHandler0"/> 
+                        </void> 
+                        <void method="addMouseMotionListener"> 
+                            <object idref="GJContainerMouseHandler0"/> 
+                        </void> 
+                        <void method="addMouseMotionListener"> 
+                            <object idref="GJAddedComponentMouseHandler0"/> 
+                        </void> 
+                        <void method="addMouseMotionListener"> 
+                            <object idref="GJContainerMouseHandler0"/> 
+                        </void> 
+                        <void method="addMouseMotionListener"> 
+                            <object idref="GJAddedComponentMouseHandler0"/> 
+                        </void> 
+                    </object> 
+                </void> 
+                <void property="majorXHint"> 
+                    <double>1.0</double> 
+                </void> 
+                <void property="majorYHint"> 
+                    <double>0.5</double> 
+                </void> 
+                <void property="mousePositionTextField"> 
+                    <object class="javax.swing.JLabel"> 
+                        <void property="font"> 
+                            <object class="java.awt.Font"> 
+                                <string>Sans Serif</string> 
+                                <int>0</int> 
+                                <int>10</int> 
+                            </object> 
+                        </void> 
+                        <void property="horizontalAlignment"> 
+                            <int>2</int> 
+                        </void> 
+                    </object> 
+                </void> 
+                <void id="ArrayList0" property="plots"> 
+                    <void method="add"> 
+                        <object id="GJScatter0" class="kcl.waterloo.graphics.plots2D.GJScatter"> 
+                            <void property="XData"> 
+                                <object class="kcl.waterloo.graphics.data.GJDoubleDataVector"> 
+                                    <void property="axis"> 
+                                        <object id="GJDataVectorInterface$AXIS0" class="kcl.waterloo.graphics.data.GJDataVectorInterface$AXIS" method="valueOf"> 
+                                            <string>XAXIS</string> 
+                                        </object> 
+                                    </void> 
+                                    <void property="dataBuffer"> 
+                                        <array class="java.lang.Double" length="20"> 
+                                            <void index="0"> 
+                                                <double>0.5</double> 
+                                            </void> 
+                                            <void index="1"> 
+                                                <double>1.0</double> 
+                                            </void> 
+                                            <void index="2"> 
+                                                <double>1.5</double> 
+                                            </void> 
+                                            <void index="3"> 
+                                                <double>2.0</double> 
+                                            </void> 
+                                            <void index="4"> 
+                                                <double>2.5</double> 
+                                            </void> 
+                                            <void index="5"> 
+                                                <double>3.0</double> 
+                                            </void> 
+                                            <void index="6"> 
+                                                <double>3.5</double> 
+                                            </void> 
+                                            <void index="7"> 
+                                                <double>4.0</double> 
+                                            </void> 
+                                            <void index="8"> 
+                                                <double>4.5</double> 
+                                            </void> 
+                                            <void index="9"> 
+                                                <double>5.0</double> 
+                                            </void> 
+                                            <void index="10"> 
+                                                <double>5.5</double> 
+                                            </void> 
+                                            <void index="11"> 
+                                                <double>6.0</double> 
+                                            </void> 
+                                            <void index="12"> 
+                                                <double>6.5</double> 
+                                            </void> 
+                                            <void index="13"> 
+                                                <double>7.0</double> 
+                                            </void> 
+                                            <void index="14"> 
+                                                <double>7.5</double> 
+                                            </void> 
+                                            <void index="15"> 
+                                                <double>8.0</double> 
+                                            </void> 
+                                            <void index="16"> 
+                                                <double>8.5</double> 
+                                            </void> 
+                                            <void index="17"> 
+                                                <double>9.0</double> 
+                                            </void> 
+                                            <void index="18"> 
+                                                <double>9.5</double> 
+                                            </void> 
+                                            <void index="19"> 
+                                                <double>10.0</double> 
+                                            </void> 
+                                        </array> 
+                                    </void> 
+                                    <void property="parentPlot"> 
+                                        <object idref="GJScatter0"/> 
+                                    </void> 
+                                </object> 
+                            </void> 
+                            <void property="YData"> 
+                                <object class="kcl.waterloo.graphics.data.GJDoubleDataVector"> 
+                                    <void property="axis"> 
+                                        <object id="GJDataVectorInterface$AXIS1" class="kcl.waterloo.graphics.data.GJDataVectorInterface$AXIS" method="valueOf"> 
+                                            <string>YAXIS</string> 
+                                        </object> 
+                                    </void> 
+                                    <void property="dataBuffer"> 
+                                        <array class="java.lang.Double" length="20"> 
+                                            <void index="0"> 
+                                                <double>-0.6931471805599453</double> 
+                                            </void> 
+                                            <void index="1"> 
+                                                <double>0.0</double> 
+                                            </void> 
+                                            <void index="2"> 
+                                                <double>0.4054651081081644</double> 
+                                            </void> 
+                                            <void index="3"> 
+                                                <double>0.6931471805599453</double> 
+                                            </void> 
+                                            <void index="4"> 
+                                                <double>0.9162907318741551</double> 
+                                            </void> 
+                                            <void index="5"> 
+                                                <double>1.0986122886681096</double> 
+                                            </void> 
+                                            <void index="6"> 
+                                                <double>1.252762968495368</double> 
+                                            </void> 
+                                            <void index="7"> 
+                                                <double>1.3862943611198906</double> 
+                                            </void> 
+                                            <void index="8"> 
+                                                <double>1.5040773967762742</double> 
+                                            </void> 
+                                            <void index="9"> 
+                                                <double>1.6094379124341003</double> 
+                                            </void> 
+                                            <void index="10"> 
+                                                <double>1.7047480922384253</double> 
+                                            </void> 
+                                            <void index="11"> 
+                                                <double>1.791759469228055</double> 
+                                            </void> 
+                                            <void index="12"> 
+                                                <double>1.8718021769015913</double> 
+                                            </void> 
+                                            <void index="13"> 
+                                                <double>1.9459101490553132</double> 
+                                            </void> 
+                                            <void index="14"> 
+                                                <double>2.0149030205422647</double> 
+                                            </void> 
+                                            <void index="15"> 
+                                                <double>2.0794415416798357</double> 
+                                            </void> 
+                                            <void index="16"> 
+                                                <double>2.1400661634962708</double> 
+                                            </void> 
+                                            <void index="17"> 
+                                                <double>2.1972245773362196</double> 
+                                            </void> 
+                                            <void index="18"> 
+                                                <double>2.2512917986064953</double> 
+                                            </void> 
+                                            <void index="19"> 
+                                                <double>2.302585092994046</double> 
+                                            </void> 
+                                        </array> 
+                                    </void> 
+                                    <void property="parentPlot"> 
+                                        <object idref="GJScatter0"/> 
+                                    </void> 
+                                </object> 
+                            </void> 
+                            <void property="dataModel"> 
+                                <void property="plotList"> 
+                                    <void method="add"> 
+                                        <object id="GJLine0" class="kcl.waterloo.graphics.plots2D.GJLine"> 
+                                            <void property="XData"> 
+                                                <object class="kcl.waterloo.graphics.data.GJDoubleDataVector"> 
+                                                    <void property="axis"> 
+                                                        <object idref="GJDataVectorInterface$AXIS0"/> 
+                                                    </void> 
+                                                    <void property="parentPlot"> 
+                                                        <object idref="GJLine0"/> 
+                                                    </void> 
+                                                </object> 
+                                            </void> 
+                                            <void property="YData"> 
+                                                <object class="kcl.waterloo.graphics.data.GJDoubleDataVector"> 
+                                                    <void property="axis"> 
+                                                        <object idref="GJDataVectorInterface$AXIS1"/> 
+                                                    </void> 
+                                                    <void property="parentPlot"> 
+                                                        <object idref="GJLine0"/> 
+                                                    </void> 
+                                                </object> 
+                                            </void> 
+                                            <void property="edgeColor"> 
+                                                <void method="add"> 
+                                                    <object idref="Color1"/> 
+                                                </void> 
+                                            </void> 
+                                            <void property="edgeStroke"> 
+                                                <void method="add"> 
+                                                    <object class="java.awt.BasicStroke"> 
+                                                        <float>1.5</float> 
+                                                        <int>2</int> 
+                                                        <int>0</int> 
+                                                        <float>10.0</float> 
+                                                        <null/> 
+                                                        <float>0.0</float> 
+                                                    </object> 
+                                                </void> 
+                                            </void> 
+                                            <void property="fill"> 
+                                                <void method="add"> 
+                                                    <object idref="Color3"/> 
+                                                </void> 
+                                            </void> 
+                                            <void property="lineColor"> 
+                                                <void method="add"> 
+                                                    <object idref="Color1"/> 
+                                                </void> 
+                                            </void> 
+                                            <void property="lineStroke"> 
+                                                <void method="add"> 
+                                                    <object class="java.awt.BasicStroke"> 
+                                                        <float>1.75</float> 
+                                                        <int>0</int> 
+                                                        <int>2</int> 
+                                                        <float>10.0</float> 
+                                                        <null/> 
+                                                        <float>0.0</float> 
+                                                    </object> 
+                                                </void> 
+                                            </void> 
+                                            <void property="markerArray"> 
+                                                <void method="add"> 
+                                                    <object class="kcl.waterloo.marker.GJMarker"> 
+                                                        <void id="Path2D$Double0" property="path"/> 
+                                                        <void property="path"> 
+                                                            <object idref="Path2D$Double0"/> 
+                                                        </void> 
+                                                        <void id="ArrayList1" property="segments"> 
+                                                            <void method="add"> 
+                                                                <object class="kcl.waterloo.marker.GJPathSegmentInfo"> 
+                                                                    <void id="doubleArray0" property="data"> 
+                                                                        <void index="0"> 
+                                                                            <double>5.0</double> 
+                                                                        </void> 
+                                                                    </void> 
+                                                                    <void property="data"> 
+                                                                        <object idref="doubleArray0"/> 
+                                                                    </void> 
+                                                                    <void property="type"> 
+                                                                        <int>0</int> 
+                                                                    </void> 
+                                                                </object> 
+                                                            </void> 
+                                                            <void method="add"> 
+                                                                <object class="kcl.waterloo.marker.GJPathSegmentInfo"> 
+                                                                    <void id="doubleArray1" property="data"> 
+                                                                        <void index="0"> 
+                                                                            <double>5.0</double> 
+                                                                        </void> 
+                                                                        <void index="1"> 
+                                                                            <double>2.761423749153966</double> 
+                                                                        </void> 
+                                                                        <void index="2"> 
+                                                                            <double>2.761423749153966</double> 
+                                                                        </void> 
+                                                                        <void index="3"> 
+                                                                            <double>5.0</double> 
+                                                                        </void> 
+                                                                        <void index="5"> 
+                                                                            <double>5.0</double> 
+                                                                        </void> 
+                                                                    </void> 
+                                                                    <void property="data"> 
+                                                                        <object idref="doubleArray1"/> 
+                                                                    </void> 
+                                                                    <void property="type"> 
+                                                                        <int>3</int> 
+                                                                    </void> 
+                                                                </object> 
+                                                            </void> 
+                                                            <void method="add"> 
+                                                                <object class="kcl.waterloo.marker.GJPathSegmentInfo"> 
+                                                                    <void id="doubleArray2" property="data"> 
+                                                                        <void index="0"> 
+                                                                            <double>-2.7614237491539666</double> 
+                                                                        </void> 
+                                                                        <void index="1"> 
+                                                                            <double>5.0</double> 
+                                                                        </void> 
+                                                                        <void index="2"> 
+                                                                            <double>-5.0</double> 
+                                                                        </void> 
+                                                                        <void index="3"> 
+                                                                            <double>2.761423749153966</double> 
+                                                                        </void> 
+                                                                        <void index="4"> 
+                                                                            <double>-5.0</double> 
+                                                                        </void> 
+                                                                    </void> 
+                                                                    <void property="data"> 
+                                                                        <object idref="doubleArray2"/> 
+                                                                    </void> 
+                                                                    <void property="type"> 
+                                                                        <int>3</int> 
+                                                                    </void> 
+                                                                </object> 
+                                                            </void> 
+                                                            <void method="add"> 
+                                                                <object class="kcl.waterloo.marker.GJPathSegmentInfo"> 
+                                                                    <void id="doubleArray3" property="data"> 
+                                                                        <void index="0"> 
+                                                                            <double>-5.0</double> 
+                                                                        </void> 
+                                                                        <void index="1"> 
+                                                                            <double>-2.7614237491539666</double> 
+                                                                        </void> 
+                                                                        <void index="2"> 
+                                                                            <double>-2.7614237491539666</double> 
+                                                                        </void> 
+                                                                        <void index="3"> 
+                                                                            <double>-5.0</double> 
+                                                                        </void> 
+                                                                        <void index="5"> 
+                                                                            <double>-5.0</double> 
+                                                                        </void> 
+                                                                    </void> 
+                                                                    <void property="data"> 
+                                                                        <object idref="doubleArray3"/> 
+                                                                    </void> 
+                                                                    <void property="type"> 
+                                                                        <int>3</int> 
+                                                                    </void> 
+                                                                </object> 
+                                                            </void> 
+                                                            <void method="add"> 
+                                                                <object class="kcl.waterloo.marker.GJPathSegmentInfo"> 
+                                                                    <void id="doubleArray4" property="data"> 
+                                                                        <void index="0"> 
+                                                                            <double>2.761423749153966</double> 
+                                                                        </void> 
+                                                                        <void index="1"> 
+                                                                            <double>-5.0</double> 
+                                                                        </void> 
+                                                                        <void index="2"> 
+                                                                            <double>5.0</double> 
+                                                                        </void> 
+                                                                        <void index="3"> 
+                                                                            <double>-2.7614237491539666</double> 
+                                                                        </void> 
+                                                                        <void index="4"> 
+                                                                            <double>5.0</double> 
+                                                                        </void> 
+                                                                    </void> 
+                                                                    <void property="data"> 
+                                                                        <object idref="doubleArray4"/> 
+                                                                    </void> 
+                                                                    <void property="type"> 
+                                                                        <int>3</int> 
+                                                                    </void> 
+                                                                </object> 
+                                                            </void> 
+                                                            <void method="add"> 
+                                                                <object class="kcl.waterloo.marker.GJPathSegmentInfo"> 
+                                                                    <void id="doubleArray5" property="data"> 
+                                                                        <void index="0"> 
+                                                                            <double>2.761423749153966</double> 
+                                                                        </void> 
+                                                                        <void index="1"> 
+                                                                            <double>-5.0</double> 
+                                                                        </void> 
+                                                                        <void index="2"> 
+                                                                            <double>5.0</double> 
+                                                                        </void> 
+                                                                        <void index="3"> 
+                                                                            <double>-2.7614237491539666</double> 
+                                                                        </void> 
+                                                                        <void index="4"> 
+                                                                            <double>5.0</double> 
+                                                                        </void> 
+                                                                    </void> 
+                                                                    <void property="data"> 
+                                                                        <object idref="doubleArray5"/> 
+                                                                    </void> 
+                                                                    <void property="type"> 
+                                                                        <int>4</int> 
+                                                                    </void> 
+                                                                </object> 
+                                                            </void> 
+                                                        </void> 
+                                                        <void property="segments"> 
+                                                            <object idref="ArrayList1"/> 
+                                                        </void> 
+                                                        <void id="Path2D$Double1" property="shape"/> 
+                                                    </object> 
+                                                </void> 
+                                            </void> 
+                                            <void property="parentGraph"> 
+                                                <object idref="GJGraph0"/> 
+                                            </void> 
+                                            <void property="parentPlot"> 
+                                                <object idref="GJScatter0"/> 
+                                            </void> 
+                                            <void property="screenDataArray"> 
+                                                <void method="add"> 
+                                                    <object class="java.awt.geom.Path2D$Double"/> 
+                                                </void> 
+                                            </void> 
+                                        </object> 
+                                    </void> 
+                                </void> 
+                            </void> 
+                            <void property="edgeColor"> 
+                                <void method="add"> 
+                                    <object idref="Color1"/> 
+                                </void> 
+                            </void> 
+                            <void property="edgeStroke"> 
+                                <void method="add"> 
+                                    <object class="java.awt.BasicStroke"> 
+                                        <float>1.5</float> 
+                                        <int>2</int> 
+                                        <int>0</int> 
+                                        <float>10.0</float> 
+                                        <null/> 
+                                        <float>0.0</float> 
+                                    </object> 
+                                </void> 
+                            </void> 
+                            <void property="fill"> 
+                                <void method="add"> 
+                                    <object idref="Color3"/> 
+                                </void> 
+                            </void> 
+                            <void property="lineColor"> 
+                                <void method="add"> 
+                                    <object idref="Color1"/> 
+                                </void> 
+                            </void> 
+                            <void property="lineStroke"> 
+                                <void method="add"> 
+                                    <object class="java.awt.BasicStroke"> 
+                                        <float>1.75</float> 
+                                        <int>0</int> 
+                                        <int>2</int> 
+                                        <float>10.0</float> 
+                                        <null/> 
+                                        <float>0.0</float> 
+                                    </object> 
+                                </void> 
+                            </void> 
+                            <void property="markerArray"> 
+                                <void method="add"> 
+                                    <object class="kcl.waterloo.marker.GJMarker"> 
+                                        <void id="Path2D$Double2" property="path"/> 
+                                        <void property="path"> 
+                                            <object idref="Path2D$Double2"/> 
+                                        </void> 
+                                        <void id="ArrayList2" property="segments"> 
+                                            <void method="add"> 
+                                                <object class="kcl.waterloo.marker.GJPathSegmentInfo"> 
+                                                    <void id="doubleArray6" property="data"> 
+                                                        <void index="0"> 
+                                                            <double>5.0</double> 
+                                                        </void> 
+                                                    </void> 
+                                                    <void property="data"> 
+                                                        <object idref="doubleArray6"/> 
+                                                    </void> 
+                                                    <void property="type"> 
+                                                        <int>0</int> 
+                                                    </void> 
+                                                </object> 
+                                            </void> 
+                                            <void method="add"> 
+                                                <object class="kcl.waterloo.marker.GJPathSegmentInfo"> 
+                                                    <void id="doubleArray7" property="data"> 
+                                                        <void index="0"> 
+                                                            <double>5.0</double> 
+                                                        </void> 
+                                                        <void index="1"> 
+                                                            <double>2.761423749153966</double> 
+                                                        </void> 
+                                                        <void index="2"> 
+                                                            <double>2.761423749153966</double> 
+                                                        </void> 
+                                                        <void index="3"> 
+                                                            <double>5.0</double> 
+                                                        </void> 
+                                                        <void index="5"> 
+                                                            <double>5.0</double> 
+                                                        </void> 
+                                                    </void> 
+                                                    <void property="data"> 
+                                                        <object idref="doubleArray7"/> 
+                                                    </void> 
+                                                    <void property="type"> 
+                                                        <int>3</int> 
+                                                    </void> 
+                                                </object> 
+                                            </void> 
+                                            <void method="add"> 
+                                                <object class="kcl.waterloo.marker.GJPathSegmentInfo"> 
+                                                    <void id="doubleArray8" property="data"> 
+                                                        <void index="0"> 
+                                                            <double>-2.7614237491539666</double> 
+                                                        </void> 
+                                                        <void index="1"> 
+                                                            <double>5.0</double> 
+                                                        </void> 
+                                                        <void index="2"> 
+                                                            <double>-5.0</double> 
+                                                        </void> 
+                                                        <void index="3"> 
+                                                            <double>2.761423749153966</double> 
+                                                        </void> 
+                                                        <void index="4"> 
+                                                            <double>-5.0</double> 
+                                                        </void> 
+                                                    </void> 
+                                                    <void property="data"> 
+                                                        <object idref="doubleArray8"/> 
+                                                    </void> 
+                                                    <void property="type"> 
+                                                        <int>3</int> 
+                                                    </void> 
+                                                </object> 
+                                            </void> 
+                                            <void method="add"> 
+                                                <object class="kcl.waterloo.marker.GJPathSegmentInfo"> 
+                                                    <void id="doubleArray9" property="data"> 
+                                                        <void index="0"> 
+                                                            <double>-5.0</double> 
+                                                        </void> 
+                                                        <void index="1"> 
+                                                            <double>-2.7614237491539666</double> 
+                                                        </void> 
+                                                        <void index="2"> 
+                                                            <double>-2.7614237491539666</double> 
+                                                        </void> 
+                                                        <void index="3"> 
+                                                            <double>-5.0</double> 
+                                                        </void> 
+                                                        <void index="5"> 
+                                                            <double>-5.0</double> 
+                                                        </void> 
+                                                    </void> 
+                                                    <void property="data"> 
+                                                        <object idref="doubleArray9"/> 
+                                                    </void> 
+                                                    <void property="type"> 
+                                                        <int>3</int> 
+                                                    </void> 
+                                                </object> 
+                                            </void> 
+                                            <void method="add"> 
+                                                <object class="kcl.waterloo.marker.GJPathSegmentInfo"> 
+                                                    <void id="doubleArray10" property="data"> 
+                                                        <void index="0"> 
+                                                            <double>2.761423749153966</double> 
+                                                        </void> 
+                                                        <void index="1"> 
+                                                            <double>-5.0</double> 
+                                                        </void> 
+                                                        <void index="2"> 
+                                                            <double>5.0</double> 
+                                                        </void> 
+                                                        <void index="3"> 
+                                                            <double>-2.7614237491539666</double> 
+                                                        </void> 
+                                                        <void index="4"> 
+                                                            <double>5.0</double> 
+                                                        </void> 
+                                                    </void> 
+                                                    <void property="data"> 
+                                                        <object idref="doubleArray10"/> 
+                                                    </void> 
+                                                    <void property="type"> 
+                                                        <int>3</int> 
+                                                    </void> 
+                                                </object> 
+                                            </void> 
+                                            <void method="add"> 
+                                                <object class="kcl.waterloo.marker.GJPathSegmentInfo"> 
+                                                    <void id="doubleArray11" property="data"> 
+                                                        <void index="0"> 
+                                                            <double>2.761423749153966</double> 
+                                                        </void> 
+                                                        <void index="1"> 
+                                                            <double>-5.0</double> 
+                                                        </void> 
+                                                        <void index="2"> 
+                                                            <double>5.0</double> 
+                                                        </void> 
+                                                        <void index="3"> 
+                                                            <double>-2.7614237491539666</double> 
+                                                        </void> 
+                                                        <void index="4"> 
+                                                            <double>5.0</double> 
+                                                        </void> 
+                                                    </void> 
+                                                    <void property="data"> 
+                                                        <object idref="doubleArray11"/> 
+                                                    </void> 
+                                                    <void property="type"> 
+                                                        <int>4</int> 
+                                                    </void> 
+                                                </object> 
+                                            </void> 
+                                        </void> 
+                                        <void property="segments"> 
+                                            <object idref="ArrayList2"/> 
+                                        </void> 
+                                        <void property="shape"> 
+                                            <object idref="Path2D$Double1"/> 
+                                        </void> 
+                                    </object> 
+                                </void> 
+                            </void> 
+                            <void property="parentGraph"> 
+                                <object idref="GJGraph0"/> 
+                            </void> 
+                            <void property="screenDataArray"> 
+                                <void method="add"> 
+                                    <object class="java.awt.geom.Path2D$Double"/> 
+                                </void> 
+                            </void> 
+                        </object> 
+                    </void> 
+                </void> 
+                <void property="plots"> 
+                    <object idref="ArrayList0"/> 
+                </void> 
+                <void property="rightAxisPainted"> 
+                    <boolean>true</boolean> 
+                </void> 
+                <void property="rightAxisPanel"> 
+                    <object id="GJAxisPanel2" class="kcl.waterloo.graphics.GJAxisPanel"> 
+                        <void property="dynamicExtent"> 
+                            <double>10.0</double> 
+                        </void> 
+                        <void property="label"> 
+                            <void property="foregroundPainter"> 
+                                <void id="BufferedImageOpArray2" property="filters"/> 
+                                <void property="filters"> 
+                                    <object idref="BufferedImageOpArray2"/> 
+                                </void> 
+                            </void> 
+                            <void property="textRotation"> 
+                                <double>4.71238898038469</double> 
+                            </void> 
+                        </void> 
+                        <void property="parentGraph"> 
+                            <object idref="GJGraph0"/> 
+                        </void> 
+                        <void property="position"> 
+                            <object class="kcl.waterloo.graphics.GJAxisPanel$Position" method="valueOf"> 
+                                <string>RIGHT</string> 
+                            </object> 
+                        </void> 
+                        <void method="addMouseListener"> 
+                            <object idref="GJAddedComponentMouseHandler0"/> 
+                        </void> 
+                        <void method="addMouseListener"> 
+                            <object idref="GJContainerMouseHandler0"/> 
+                        </void> 
+                        <void method="addMouseListener"> 
+                            <object idref="GJAddedComponentMouseHandler0"/> 
+                        </void> 
+                        <void method="addMouseListener"> 
+                            <object idref="GJContainerMouseHandler0"/> 
+                        </void> 
+                        <void method="addMouseListener"> 
+                            <object idref="GJAddedComponentMouseHandler0"/> 
+                        </void> 
+                        <void method="addMouseMotionListener"> 
+                            <object idref="GJAddedComponentMouseHandler0"/> 
+                        </void> 
+                        <void method="addMouseMotionListener"> 
+                            <object idref="GJContainerMouseHandler0"/> 
+                        </void> 
+                        <void method="addMouseMotionListener"> 
+                            <object idref="GJAddedComponentMouseHandler0"/> 
+                        </void> 
+                        <void method="addMouseMotionListener"> 
+                            <object idref="GJContainerMouseHandler0"/> 
+                        </void> 
+                        <void method="addMouseMotionListener"> 
+                            <object idref="GJAddedComponentMouseHandler0"/> 
+                        </void> 
+                    </object> 
+                </void> 
+                <void property="topAxisPainted"> 
+                    <boolean>true</boolean> 
+                </void> 
+                <void property="topAxisPanel"> 
+                    <object id="GJAxisPanel3" class="kcl.waterloo.graphics.GJAxisPanel"> 
+                        <void property="dynamicExtent"> 
+                            <double>10.0</double> 
+                        </void> 
+                        <void property="label"> 
+                            <void property="foregroundPainter"> 
+                                <void id="BufferedImageOpArray3" property="filters"/> 
+                                <void property="filters"> 
+                                    <object idref="BufferedImageOpArray3"/> 
+                                </void> 
+                            </void> 
+                        </void> 
+                        <void property="parentGraph"> 
+                            <object idref="GJGraph0"/> 
+                        </void> 
+                        <void property="position"> 
+                            <object class="kcl.waterloo.graphics.GJAxisPanel$Position" method="valueOf"> 
+                                <string>TOP</string> 
+                            </object> 
+                        </void> 
+                        <void method="addMouseListener"> 
+                            <object idref="GJAddedComponentMouseHandler0"/> 
+                        </void> 
+                        <void method="addMouseListener"> 
+                            <object idref="GJContainerMouseHandler0"/> 
+                        </void> 
+                        <void method="addMouseListener"> 
+                            <object idref="GJAddedComponentMouseHandler0"/> 
+                        </void> 
+                        <void method="addMouseListener"> 
+                            <object idref="GJContainerMouseHandler0"/> 
+                        </void> 
+                        <void method="addMouseListener"> 
+                            <object idref="GJAddedComponentMouseHandler0"/> 
+                        </void> 
+                        <void method="addMouseMotionListener"> 
+                            <object idref="GJAddedComponentMouseHandler0"/> 
+                        </void> 
+                        <void method="addMouseMotionListener"> 
+                            <object idref="GJContainerMouseHandler0"/> 
+                        </void> 
+                        <void method="addMouseMotionListener"> 
+                            <object idref="GJAddedComponentMouseHandler0"/> 
+                        </void> 
+                        <void method="addMouseMotionListener"> 
+                            <object idref="GJContainerMouseHandler0"/> 
+                        </void> 
+                        <void method="addMouseMotionListener"> 
+                            <object idref="GJAddedComponentMouseHandler0"/> 
+                        </void> 
+                    </object> 
+                </void> 
+                <void method="addMouseListener"> 
+                    <object idref="GJAddedComponentMouseHandler0"/> 
+                </void> 
+                <void method="addMouseMotionListener"> 
+                    <object idref="GJAddedComponentMouseHandler0"/> 
+                </void> 
+                <void method="addPropertyChangeListener"> 
+                    <object idref="GJGraphContainer0"/> 
+                </void> 
+            </object> 
+        </void> 
+        <void method="add"> 
+            <object idref="GJAxisPanel1"/> 
+        </void> 
+        <void method="add"> 
+            <object idref="GJAxisPanel2"/> 
+        </void> 
+        <void method="add"> 
+            <object idref="GJAxisPanel3"/> 
+        </void> 
+        <void method="add"> 
+            <object idref="GJAxisPanel0"/> 
+        </void> 
+        <void property="view"> 
+            <object idref="GJGraph0"/> 
+        </void> 
+        <void method="addPropertyChangeListener"> 
+            <object idref="GJGraphContainer0"/> 
+        </void> 
+    </object> 
+    <object class="java.util.ArrayList"/> 
+</java> 

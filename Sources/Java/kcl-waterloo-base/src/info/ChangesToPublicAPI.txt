@@ -1,0 +1,60 @@
+Changes to the public APIs during the alpha release stage:
+
+Version 1.1 Alpha 3:
+
+Class: GJGraph Method: setCurrentMousePosition
+This method has been made private. Files from previous versions will load correctly,
+but should be re-saved to update them as an unsuccessful attempt to call the 
+setCurrentMousePosition method will be made during de-serialization.
+
+Class GJAbstractPlotModelImpl Methods: setName and getName
+These public methods have been added:
+    getName() returns an ArrayList<String> - containing a name for the plot or
+                                             for each plot when multiplexed
+    setName(ArrayList<String>) sets the array list
+    setName(String) clears the list then adds the specified string as element 0.
+
+Interface GJGraphInterface
+    isPolar added to interface.
+
+Version 1.1 Beta
+GJFastPlotInterface added and implemented in GJAbstractPlot.
+
+kcl-waterloo-swingx module added. This can replace the swingx-core allowing only required swingx elements 
+to be added to th class path. To add swingx-all, rebuild GraphExplorer without kcl-waterloo-swingx
+and the swingx submodules.
+
+Version 1.1 Beta2
+GJBasicPanel now implements ContainerListener and ComponentListener
+GJAbstractDataVector now has a name field, and GJAbstractDataInterface
+specifies a getter and setter for it.
+
+The experimental kcl.waterloo.swing classes have been re-written kcl-waterloo-base
+      
+*******************************                                       
+Version 1.1RC2
+
+Data Model
+The plotList property has been moved out of the data model and is now in the GJAbstractPlotModelImpl.
+Setters and getters have been modified accordingly.
+This change allows a data model to be copied by reference between plots even when one is a descendant
+of the other without risk of creating infinite loops/stack overflows.
+
+CODE HAS BEEN INCLUDED TO ACCOMMODATE THIS CHANGE WHEN LOADING OLDER XML FILES SAVED
+FROM WATERLOO. SUCH FILES SHOULD BE SAVED AGAIN TO UPDATE THEM
+
+GJDataTransformInterface no longer requires GJGraphInterface parameter.
+
+GJLayerInterface no specifies an unused U parameter.
+
+The screen data array has been removed from the plot data model and implemented as a property 
+of the plot.
+
+Saving Plots
+The GJEncoder and GJDecoder now provide support for saving plots.
+The parent graph property will be set to null during the save so no Swing hierarchy will
+be saved.
+
+*******************************
+
+

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_waterlooplot" default="compile.module.waterlooplot">
+  <dirname property="module.waterlooplot.basedir" file="${ant.file.module_waterlooplot}"/>
+  
+  <property name="module.jdk.home.waterlooplot" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.waterlooplot" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.waterlooplot" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.waterlooplot" value="-encoding UTF-8 -source 1.6 ${compiler.args}"/>
+  
+  <property name="waterlooplot.output.dir" value="${module.waterlooplot.basedir}/out/production/waterlooPlot"/>
+  <property name="waterlooplot.testoutput.dir" value="${module.waterlooplot.basedir}/out/test/waterlooPlot"/>
+  
+  <path id="waterlooplot.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="waterlooplot.module.production.classpath">
+    <path refid="${module.jdk.classpath.waterlooplot}"/>
+    <path refid="library.kcl-waterloo-base.classpath"/>
+    <path refid="library.gshell.classpath"/>
+    <path refid="library.groovy-all.classpath"/>
+  </path>
+  
+  <path id="waterlooplot.runtime.production.module.classpath">
+    <pathelement location="${waterlooplot.output.dir}"/>
+    <path refid="library.kcl-waterloo-base.classpath"/>
+    <path refid="library.gshell.classpath"/>
+    <path refid="library.groovy-all.classpath"/>
+  </path>
+  
+  <path id="waterlooplot.module.classpath">
+    <path refid="${module.jdk.classpath.waterlooplot}"/>
+    <pathelement location="${waterlooplot.output.dir}"/>
+    <path refid="library.kcl-waterloo-base.classpath"/>
+    <path refid="library.gshell.classpath"/>
+    <path refid="library.groovy-all.classpath"/>
+  </path>
+  
+  <path id="waterlooplot.runtime.module.classpath">
+    <pathelement location="${waterlooplot.testoutput.dir}"/>
+    <pathelement location="${waterlooplot.output.dir}"/>
+    <path refid="library.kcl-waterloo-base.classpath"/>
+    <path refid="library.gshell.classpath"/>
+    <path refid="library.groovy-all.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.waterlooplot">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.waterlooplot">
+    <patternset refid="excluded.from.module.waterlooplot"/>
+  </patternset>
+  
+  <path id="waterlooplot.module.sourcepath">
+    <dirset dir="${module.waterlooplot.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.waterlooplot" depends="compile.module.waterlooplot.production,compile.module.waterlooplot.tests" description="Compile module waterlooPlot"/>
+  
+  <target name="compile.module.waterlooplot.production" depends="register.custom.compilers" description="Compile module waterlooPlot; production classes">
+    <mkdir dir="${waterlooplot.output.dir}"/>
+    <groovyc destdir="${waterlooplot.output.dir}" fork="yes">
+      <src refid="waterlooplot.module.sourcepath"/>
+      <classpath refid="waterlooplot.module.production.classpath"/>
+      <patternset refid="excluded.from.compilation.waterlooplot"/>
+      <javac debug="${compiler.debug}">
+        <compilerarg line="${compiler.args.waterlooplot}"/>
+      </javac>
+    </groovyc>
+    <instrumentIdeaExtensions destdir="${waterlooplot.output.dir}">
+      <compilerarg line="${compiler.args.waterlooplot}"/>
+      <bootclasspath refid="waterlooplot.module.bootclasspath"/>
+      <classpath refid="waterlooplot.module.production.classpath"/>
+      <src refid="waterlooplot.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.waterlooplot"/>
+    </instrumentIdeaExtensions>
+    
+    <copy todir="${waterlooplot.output.dir}">
+      <fileset dir="${module.waterlooplot.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.waterlooplot.tests" depends="register.custom.compilers,compile.module.waterlooplot.production" description="compile module waterlooPlot; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.waterlooplot" description="cleanup module">
+    <delete dir="${waterlooplot.output.dir}"/>
+    <delete dir="${waterlooplot.testoutput.dir}"/>
+  </target>
+</project>

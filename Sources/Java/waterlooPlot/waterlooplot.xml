@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="waterlooplot" default="all">
+  
+  
+  <property file="waterlooplot.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="128m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/rcs/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/.pyc/**"/>
+    <exclude name="**/.pyo/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/*.lib/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/.bundle/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.war"/>
+    <include name="*.ear"/>
+    <include name="*.apk"/>
+    <include name="*.zip"/>
+    <include name="*.swc"/>
+    <include name="*.ane"/>
+    <include name="*.egg"/>
+    <include name="*.jar"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.6" value="${jdk.home.1.6}/bin"/>
+  <path id="jdk.classpath.1.6">
+    <fileset dir="${jdk.home.1.6}">
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/deploy.jar"/>
+      <include name="jre/lib/javaws.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/management-agent.jar"/>
+      <include name="jre/lib/plugin.jar"/>
+      <include name="jre/lib/resources.jar"/>
+      <include name="jre/lib/rt.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+      <include name="jre/lib/ext/sunmscapi.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.6}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.6}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.6"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.gshell.classpath">
+    <pathelement location="${basedir}/../../../Waterloo_For_R/gshell/inst/java/GShell/dist/GShell.jar"/>
+  </path>
+  
+  <path id="library.kcl-waterloo-base.classpath">
+    <pathelement location="${basedir}/../kcl-waterloo-base/dist/kcl-waterloo-base.jar"/>
+  </path>
+  
+  
+  <!-- Global Libraries -->
+  
+  <path id="library.groovy-2.2.1.classpath">
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/abeilleformbuilder-3.0.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/ant-1.9.2.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/ant-antlr-1.9.2.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/ant-junit-1.9.2.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/ant-launcher-1.9.2.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/antlr-2.7.7.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/asm-4.1.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/asm-analysis-4.1.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/asm-commons-4.1.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/asm-tree-4.1.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/asm-util-4.1.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/batik-anim-1.7.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/batik-awt-util-1.7.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/batik-bridge-1.7.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/batik-codec-1.7.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/batik-css-1.7.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/batik-dom-1.7.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/batik-ext-1.7.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/batik-extension-1.7.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/batik-gui-util-1.7.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/batik-gvt-1.7.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/batik-parser-1.7.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/batik-script-1.7.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/batik-svg-dom-1.7.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/batik-svggen-1.7.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/batik-swing-1.7.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/batik-transcoder-1.7.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/batik-util-1.7.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/batik-xml-1.7.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/bsf-2.4.0.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/commons-cli-1.2.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/commons-logging-1.1.1.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/cssbuilder-1.0.0.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/cssparser-0.9.5.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/easyb-core-1.5.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/filters-2.0.235.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/flamingo-4.1.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/flamingobuilder-0.5.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/forms-1.2.1.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/formsrt-2.1.0M1.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/gant_groovy2.2-1.9.10.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/gfxbuilder-core-0.8.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/gfxbuilder-svg-0.8.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/gfxbuilder-swingx-0.8.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/gmock-0.8.3.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/gpars-1.1.0.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/groovy-2.2.1.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/groovy-ant-2.2.1.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/groovy-bsf-2.2.1.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/groovy-console-2.2.1.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/groovy-docgenerator-2.2.1.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/groovy-groovydoc-2.2.1.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/groovy-groovysh-2.2.1.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/groovy-jmx-2.2.1.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/groovy-json-2.2.1.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/groovy-jsr223-2.2.1.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/groovy-servlet-2.2.1.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/groovy-sql-2.2.1.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/groovy-swing-2.2.1.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/groovy-templates-2.2.1.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/groovy-test-2.2.1.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/groovy-testng-2.2.1.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/groovy-xml-2.2.1.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/groovyserv-0.13.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/hamcrest-core-1.3.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/ivy-2.3.0.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/jacob-1.14.3.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/jansi-1.10.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/jcommander-1.27.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/jcsp-1.1-rc5.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/jide-oss-3.4.7.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/jidebuilder-6.0.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/jline-2.10.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/jna-3.2.7.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/jsilhouette-geom-0.4.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/jsp-api-2.0.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/jsr166y-1.7.0.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/junit-4.11.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/mac_widgets-0.9.5.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/macwidgetsbuilder-0.5.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/multiverse-core-0.7.0.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/netty-3.7.0.Final.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/qdox-1.12.1.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/sac-1.3.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/scriptom-1.6.0.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/scriptom-ie-6-tlb-1.6.0.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/scriptom-office-2K3-tlb-1.6.0.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/scriptom-sapi-tlb-1.6.0.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/scriptom-scripting-tlb-1.6.0.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/scriptom-wbem-tlb-1.6.0.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/scriptom-wsh-tlb-1.6.0.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/servlet-api-2.4.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/spock-core-1.0-groovy-2.0-20130911.135641-24.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/svg-salamander-1.1.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/swing-worker-1.1.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/swingx-action-1.6.4.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/swingx-autocomplete-1.6.4.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/swingx-beaninfo-1.6.4.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/swingx-common-1.6.4.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/swingx-core-1.6.4.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/swingx-graphics-1.6.4.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/swingx-painters-1.6.4.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/swingx-plaf-1.6.4.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/swingxbuilder-0.3.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/testng-6.8.5.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/timingframework-1.0.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/trident-7.0.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/tridentbuilder-0.6.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/xml-apis-ext-1.3.04.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/xmlpull-1.1.3.1.jar"/>
+    <pathelement location="C:/Program Files (x86)/Groovy/Groovy-2.2.1/lib/xstream-1.4.4.jar"/>
+  </path>
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <pathelement location="${javac2.home}/javac2.jar"/>
+    <pathelement location="${javac2.home}/jdom.jar"/>
+    <pathelement location="${javac2.home}/asm4-all.jar"/>
+    <pathelement location="${javac2.home}/jgoodies-forms.jar"/>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+    <property name="grooovyc.task.sdk" value="library.groovy-2.2.1.classpath"/>
+    <taskdef name="groovyc" classname="org.codehaus.groovy.ant.Groovyc" classpathref="${grooovyc.task.sdk}"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  <import file="${basedir}/module_waterlooplot.xml"/>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.waterlooplot" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.waterlooplot" description="build all modules"/>
+  
+  <target name="init.artifacts">
+    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+    <property name="artifact.output.waterlooplot:jar" value="${basedir}/out/artifacts/waterlooPlot_jar"/>
+    <mkdir dir="${artifacts.temp.dir}"/>
+    <property name="temp.jar.path.waterlooPlot.jar" value="${artifacts.temp.dir}/waterlooPlot.jar"/>
+  </target>
+  
+  <target name="artifact.waterlooplot:jar" depends="init.artifacts, compile.module.waterlooplot" description="Build &#39;waterlooPlot:jar&#39; artifact">
+    <property name="artifact.temp.output.waterlooplot:jar" value="${artifacts.temp.dir}/waterlooPlot_jar"/>
+    <mkdir dir="${artifact.temp.output.waterlooplot:jar}"/>
+    <jar destfile="${temp.jar.path.waterlooPlot.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain">
+      <zipfileset dir="${waterlooplot.output.dir}"/>
+      <zipfileset src="${basedir}/../../../Waterloo_For_R/gshell/inst/java/GShell/dist/GShell.jar"/>
+      <zipfileset src="${basedir}/../kcl-waterloo-base/dist/kcl-waterloo-base.jar"/>
+    </jar>
+    <copy file="${temp.jar.path.waterlooPlot.jar}" tofile="${artifact.temp.output.waterlooplot:jar}/waterlooPlot.jar"/>
+  </target>
+  
+  <target name="build.all.artifacts" depends="artifact.waterlooplot:jar" description="Build all artifacts">
+    <mkdir dir="${artifact.output.waterlooplot:jar}"/>
+    <copy todir="${artifact.output.waterlooplot:jar}">
+      <fileset dir="${artifact.temp.output.waterlooplot:jar}"/>
+    </copy>
+    
+    <!-- Delete temporary files -->
+    <delete dir="${artifacts.temp.dir}"/>
+  </target>
+  
+  <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
+</project>

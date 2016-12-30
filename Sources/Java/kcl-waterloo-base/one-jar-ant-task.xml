@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<project>
+    <!--
+    This file is used to create a single jar file after building the 
+    standard Netbeans distribtion
+    -->   
+    <property name="one-jar.dist.dir" value="../Tools"/>   
+    <property name="one-jar.version" value="0.97"/>
+    <property name="one-jar.ant.jar" value="${one-jar.dist.dir}/one-jar-ant-task-${one-jar.version}.jar"/>
+    <taskdef name="one-jar" classname="com.simontuffs.onejar.ant.OneJarTask" 
+             classpath="${one-jar.ant.jar}" onerror="report"/>
+
+</project>
