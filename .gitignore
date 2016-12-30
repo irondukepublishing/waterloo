@@ -33,13 +33,23 @@
 ._*
 .Spotlight-V100
 .Trashes
-ehthumbs.db
+thumbs.db
 Thumbs.db
 
-/Sources
+/Sources/Extra
+/Sources/Java/NonDistro
+/Sources/Java/ThirdPartyDependencies/ThirdPartyNotNeeded
+/Sources/Java/kcl-waterloo-base/build/classes/kcl/waterloo/demo/resources/TestData.xml
 /Extra
 /_gsdata_/
 /eclipse/
 /javadoc/
 
 
+/Sources/Java/GraphExplorer/build/
+/Sources/Java/kcl-waterloo-base/build/
+/Sources/Java/waterlooPlot/build/
+
+/Sources/Java/GraphExplorer/dist/
+/Sources/Java/kcl-waterloo-base/dist/
+/Sources/Java/waterlooPlot/dist/

@@ -163,7 +163,7 @@ if DEV==true
         end
         copyfile(fullfile(source,'*.*'),target);
         % Delete GPL content (+ associated Waterloo code) from the LGPL distro
-        jlatexmath=fullfile(target, 'lib', 'jlatexmath-minimal-1.0.0.jar');
+        jlatexmath=fullfile(target, 'lib', 'jlatexmath-1.0.3.jar');
         if exist(jlatexmath,'file')
             delete(jlatexmath);
         end
